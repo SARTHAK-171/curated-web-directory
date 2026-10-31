@@ -1,0 +1,32 @@
+[
+  {
+    "name": "AI",
+    "icon": "sparkles",
+    "description": "AI tools, assistants, models and creative AI platforms."
+  },
+  {
+    "name": "Developer",
+    "icon": "code",
+    "description": "Coding tools, APIs, hosting, documentation and developer utilities."
+  },
+  {
+    "name": "Cybersecurity",
+    "icon": "shield-lock",
+    "description": "Ethical hacking labs, security learning, networking and Linux."
+  },
+  {
+    "name": "Study & Learning",
+    "icon": "school",
+    "description": "Courses, learning platforms and tools that make studying easier."
+  },
+  {
+    "name": "Fun & Entertainment",
+    "icon": "device-gamepad-2",
+    "description": "Browser games, experiments and interesting corners of the web."
+  },
+  {
+    "name": "Relaxation",
+    "icon": "leaf",
+    "description": "Ambient sounds, calm websites and tools for taking breaks."
+  }
+]

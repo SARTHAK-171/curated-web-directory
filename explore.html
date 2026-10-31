@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YOUR_SITE_NAME</title>
+  <meta name="description" content="Browse every resource in the directory.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#09090d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
+
+  <!-- Start downloading the fonts right away so text does not flicker -->
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- type="module" scripts load after the page is ready -->
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+<body data-page="explore" data-title="Explore">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- app.js fills these in on every page -->
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <div class="container">
+      <section class="page-intro">
+        <p class="preview-note enter">Placeholder page. Instant search and filters arrive in Stages 4 and 5.</p>
+        <h1 class="enter" style="--i:1">Explore</h1>
+        <p class="lead enter" style="--i:2">Browse every resource in the directory.</p>
+        <div class="enter" style="--i:3">
+        <form class="search" role="search" action="explore.html" method="get" data-search>
+          <label class="visually-hidden" for="search-input">Search resources</label>
+          <div class="search-field">
+            <span class="search-icon" data-icon="search"></span>
+            <input class="search-input" id="search-input" type="search" name="q"
+                   placeholder="Search tools, websites, topics…" autocomplete="off"
+                   enterkeyhint="search" spellcheck="false">
+            <button class="search-clear" type="button" aria-label="Clear search" data-icon="x" hidden></button>
+            <kbd class="search-hint" aria-hidden="true">/</kbd>
+            <button class="search-submit" type="submit" aria-label="Search" data-icon="arrow-right"></button>
+          </div>
+          <div class="search-suggestions">
+            <span class="mono-label">Try</span>
+            <button class="chip chip-button" type="button" data-search-suggestion="AI coding">AI coding</button>
+            <button class="chip chip-button" type="button" data-search-suggestion="learn Python">learn Python</button>
+            <button class="chip chip-button" type="button" data-search-suggestion="browser games">browser games</button>
+          </div>
+        </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

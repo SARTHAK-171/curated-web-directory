@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YOUR_SITE_NAME</title>
+  <meta name="description" content="A curated collection of useful tools, AI platforms, learning resources and interesting corners of the internet.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#09090d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
+
+  <!-- Start downloading the fonts right away so text does not flicker -->
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- type="module" scripts load after the page is ready -->
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+<body data-page="index">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- app.js fills these in on every page -->
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <div class="container">
+      <section class="page-intro">
+        <p class="preview-note enter">Stage 1.5 — design system check. The real homepage arrives in Stage 2.</p>
+        <p class="eyebrow enter" style="--i:1">A curated web directory</p>
+        <h1 class="enter" style="--i:2">Discover the internet. <span class="muted-line">Find your next favourite tool.</span></h1>
+        <p class="lead enter" style="--i:3">
+          A curated collection of useful tools, AI platforms, learning resources
+          and interesting corners of the internet. Less searching, more discovering.
+        </p>
+        <div class="button-row enter" style="--i:4">
+          <a class="btn btn-primary" href="explore.html">Explore Resources <span class="icon-nudge" data-icon="arrow-right"></span></a>
+          <a class="btn btn-secondary" href="#categories">Browse categories</a>
+        </div>
+      </section>
+
+      <section class="section section-tight" aria-label="Search">
+        <div class="enter" style="--i:5">
+        <form class="search" role="search" action="explore.html" method="get" data-search>
+          <label class="visually-hidden" for="search-input">Search resources</label>
+          <div class="search-field">
+            <span class="search-icon" data-icon="search"></span>
+            <input class="search-input" id="search-input" type="search" name="q"
+                   placeholder="Search tools, websites, topics…" autocomplete="off"
+                   enterkeyhint="search" spellcheck="false">
+            <button class="search-clear" type="button" aria-label="Clear search" data-icon="x" hidden></button>
+            <kbd class="search-hint" aria-hidden="true">/</kbd>
+            <button class="search-submit" type="submit" aria-label="Search" data-icon="arrow-right"></button>
+          </div>
+          <div class="search-suggestions">
+            <span class="mono-label">Try</span>
+            <button class="chip chip-button" type="button" data-search-suggestion="AI coding">AI coding</button>
+            <button class="chip chip-button" type="button" data-search-suggestion="learn Python">learn Python</button>
+            <button class="chip chip-button" type="button" data-search-suggestion="browser games">browser games</button>
+          </div>
+        </form>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <section class="section" id="categories" aria-labelledby="categories-heading" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Components</p>
+          <h2 id="categories-heading">Category cards</h2>
+          <p>Three samples. These are real links: they open Explore with that category in the address bar. Stage 2 builds all six from <code>categories.json</code>.</p>
+        </div>
+        <ul class="card-grid" data-reveal-stagger>
+          <li>
+            <a class="category-card" href="explore.html?category=AI">
+              <span class="category-card-top">
+                <span class="icon-tile" data-icon="sparkles"></span>
+                <span class="arrow" data-icon="arrow-up-right"></span>
+              </span>
+              <h3>AI</h3>
+              <p>AI tools, assistants, models and creative AI platforms.</p>
+              <p class="mono-label">— resources</p>
+            </a>
+          </li>
+          <li>
+            <a class="category-card" href="explore.html?category=Developer">
+              <span class="category-card-top">
+                <span class="icon-tile" data-icon="code"></span>
+                <span class="arrow" data-icon="arrow-up-right"></span>
+              </span>
+              <h3>Developer</h3>
+              <p>Coding tools, APIs, hosting, documentation and developer utilities.</p>
+              <p class="mono-label">— resources</p>
+            </a>
+          </li>
+          <li>
+            <a class="category-card" href="explore.html?category=Cybersecurity">
+              <span class="category-card-top">
+                <span class="icon-tile" data-icon="shield-lock"></span>
+                <span class="arrow" data-icon="arrow-up-right"></span>
+              </span>
+              <h3>Cybersecurity</h3>
+              <p>Ethical hacking labs, security learning, networking and Linux.</p>
+              <p class="mono-label">— resources</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="resources-heading" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Components</p>
+          <h2 id="resources-heading">Resource cards</h2>
+          <p>Design samples with placeholder content, not real resources. The dashed “Unverified” chip marks provisional data.</p>
+        </div>
+        <ul class="card-grid" data-reveal-stagger>
+          <li>
+            <article class="resource-card">
+              <div class="resource-card-top">
+                <span class="monogram" aria-hidden="true">E</span>
+                <span class="heart is-saved" data-icon="heart-filled"></span>
+              </div>
+              <div class="resource-card-body">
+                <h3>Example tool</h3>
+                <p class="mono-label">Developer</p>
+                <p>A short, clear description that explains why this resource is useful, kept to two lines.</p>
+              </div>
+              <div class="resource-card-footer">
+                <span class="chip chip-lime">Free</span>
+                <span class="chip chip-dashed">Unverified</span>
+                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="resource-card">
+              <div class="resource-card-top">
+                <span class="monogram" aria-hidden="true">S</span>
+                <span class="heart" data-icon="heart"></span>
+              </div>
+              <div class="resource-card-body">
+                <h3>Sample resource</h3>
+                <p class="mono-label">Study &amp; Learning</p>
+                <p>Another placeholder description. Long text is trimmed so that every card keeps the same height in a grid, however much is written here.</p>
+              </div>
+              <div class="resource-card-footer">
+                <span class="chip chip-violet">Freemium</span>
+                <span class="chip chip-dashed">Unverified</span>
+                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="resource-card">
+              <div class="resource-card-top">
+                <span class="monogram" aria-hidden="true">P</span>
+                <span class="heart" data-icon="heart"></span>
+              </div>
+              <div class="resource-card-body">
+                <h3>Placeholder</h3>
+                <p class="mono-label">AI</p>
+                <p>Cards lift slightly and brighten their border on hover. Hover over this one to see it.</p>
+              </div>
+              <div class="resource-card-footer">
+                <span class="chip chip-neutral">Paid</span>
+                <span class="chip chip-dashed">Unverified</span>
+                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="buttons-heading" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Components</p>
+          <h2 id="buttons-heading">Buttons and chips</h2>
+        </div>
+        <div class="button-row spaced-after">
+          <button class="btn btn-primary" type="button">Primary</button>
+          <button class="btn btn-secondary" type="button">Secondary</button>
+          <button class="btn btn-ghost" type="button">Ghost</button>
+          <button class="btn btn-secondary" type="button" disabled>Disabled</button>
+        </div>
+        <div class="chip-row">
+          <span class="chip chip-lime">Free</span>
+          <span class="chip chip-violet">Freemium</span>
+          <span class="chip chip-neutral">Paid</span>
+          <span class="chip chip-dashed">Unverified</span>
+          <span class="chip chip-lime">Selected filter <span data-icon="x"></span></span>
+          <span class="chip">Tag</span>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="colour-heading" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Foundations</p>
+          <h2 id="colour-heading">Colour and type</h2>
+        </div>
+        <ul class="swatch-grid spaced-after">
+          <li class="swatch swatch-bg">Page <code>#09090d</code></li>
+          <li class="swatch swatch-surface-1">Surface 1 <code>#13131a</code></li>
+          <li class="swatch swatch-surface-2">Surface 2 <code>#1a1a23</code></li>
+          <li class="swatch swatch-surface-3">Surface 3 <code>#22222d</code></li>
+          <li class="swatch swatch-lime">Lime <code>#b8ff6a</code></li>
+          <li class="swatch swatch-violet">Violet <code>#a58fff</code></li>
+          <li class="swatch swatch-text-1">Text 1 <code>#f3f2f8</code></li>
+          <li class="swatch swatch-text-2">Text 2 <code>#a8a6b8</code></li>
+          <li class="swatch swatch-text-3">Text 3 <code>#86849a</code></li>
+        </ul>
+        <div class="type-sample">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <p>Body text is set in Geist at 16px with generous line spacing, so it stays comfortable to read.</p>
+          <p class="mono-label">Mono label · Geist Mono</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

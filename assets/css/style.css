@@ -1,0 +1,315 @@
+/* ==========================================================================
+   style.css — the foundation: fonts, colours, spacing, motion, page basics.
+   Change a value in :root and it updates everywhere on the site.
+   ========================================================================== */
+
+/* ----- Fonts (self-hosted, so visitors never contact a third party) ----- */
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/geist-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;               /* one variable file covers every weight */
+  font-style: normal;
+  font-display: swap;                 /* show text immediately, swap when loaded */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* ----- Colour: surfaces (darkest to lightest) ----- */
+  --bg: #09090d;
+  --bg-section: #0e0e14;
+  --surface-1: #13131a;               /* cards */
+  --surface-2: #1a1a23;               /* inputs, hover, dropdowns */
+  --surface-3: #22222d;               /* icon tiles, pressed states */
+
+  /* ----- Colour: borders ----- */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.11);
+  --border-strong: rgba(255, 255, 255, 0.20);
+
+  /* ----- Colour: text ----- */
+  --text-1: #f3f2f8;                  /* headings, key text */
+  --text-2: #a8a6b8;                  /* body text */
+  --text-3: #86849a;                  /* meta text. NOT for use on --surface-3 */
+
+  /* ----- Colour: lime = actions and state only ----- */
+  --lime: #b8ff6a;
+  --lime-hover: #caff8c;
+  --lime-tint: rgba(184, 255, 106, 0.12);
+  --lime-border: rgba(184, 255, 106, 0.24);
+  --on-lime: #0a0a0f;                 /* dark text on top of lime */
+
+  /* ----- Colour: violet = quiet secondary accent ----- */
+  --violet: #a58fff;
+  --violet-text: #b9a8ff;
+  --violet-tint: rgba(165, 143, 255, 0.12);
+  --violet-border: rgba(165, 143, 255, 0.26);
+
+  /* ----- Fonts ----- */
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  /* ----- Spacing (4px base; 1rem = 16px) ----- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+
+  /* ----- Shape ----- */
+  --radius-sm: 8px;                   /* chips, small controls */
+  --radius-md: 10px;                  /* buttons, inputs */
+  --radius-lg: 14px;                  /* cards, panels */
+  --radius-xl: 20px;                  /* modals */
+
+  /* ----- Layout ----- */
+  --max-width: 75rem;                 /* 1200px */
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 1.5rem);
+  --header-height: 4rem;
+
+  /* ----- Motion: one set of timings so everything feels consistent ----- */
+  --dur-fast: 120ms;                  /* hover, press */
+  --dur-base: 200ms;                  /* menus, panels */
+  --dur-slow: 420ms;                  /* entrances */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ----- Reset: removes surprising browser defaults ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;             /* keeps the footer at the bottom */
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    60rem 26rem at 85% -10%,
+    rgba(165, 143, 255, 0.13),
+    transparent 65%
+  );
+  background-repeat: no-repeat;
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  flex: 1;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(165, 143, 255, 0.35);
+  color: var(--text-1);
+}
+
+/* ----- Typography ----- */
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-4);
+  color: var(--text-1);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 1.6rem + 3.6vw, 3.5rem);   /* 36px to 56px */
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.25rem);  /* 28px to 36px */
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.1875rem;                                /* 19px */
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0 0 var(--space-4);
+  color: var(--text-2);
+}
+
+a {
+  color: var(--text-1);
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-fast) ease, text-decoration-color var(--dur-fast) ease;
+}
+
+a:hover {
+  text-decoration-color: var(--lime);
+}
+
+.lead {
+  max-width: 40rem;
+  font-size: 1.125rem;
+}
+
+.text-muted {
+  color: var(--text-3);
+}
+
+/* Small uppercase monospace label — the site's "technical detail" */
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--violet);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.muted-line {
+  display: block;                     /* second sentence of a headline starts on its own line */
+  color: var(--text-3);
+}
+
+/* ----- Layout helpers ----- */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--max-width));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+}
+
+/* ----- Accessibility helpers ----- */
+
+/* Visible keyboard focus on everything clickable */
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+/* "Skip to content" link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--lime);
+  color: var(--on-lime);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ----- Motion: entrance animations ----- */
+
+/* One keyframe: fade in while rising 12px. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* .enter       = plays once on page load (use for content at the top of a page)
+   .reveal-in   = plays once when scrolled into view (added by app.js)
+   --i sets the order for staggered items (0, 1, 2 ...).
+   "backwards" means the animation does not keep holding the element afterwards,
+   so hover effects still work on it. */
+.enter,
+.reveal-in {
+  animation: rise var(--dur-slow) var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* Below-the-fold items wait invisibly until app.js reveals them */
+.reveal-hidden {
+  opacity: 0;
+}
+
+/* ----- Motion: smooth page-to-page navigation -----
+   Chrome, Edge and recent Safari cross-fade between pages with this. Browsers
+   that do not support it simply navigate as normal. Off for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root) {
+    animation-duration: 140ms;
+  }
+
+  ::view-transition-new(root) {
+    animation-duration: 240ms;
+  }
+}
+
+/* ----- Respect visitors who ask their device for less motion ----- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-hidden {
+    opacity: 1;
+  }
+}

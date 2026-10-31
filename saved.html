@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YOUR_SITE_NAME</title>
+  <meta name="description" content="Your saved resources will appear here.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#09090d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
+
+  <!-- Start downloading the fonts right away so text does not flicker -->
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- type="module" scripts load after the page is ready -->
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+<body data-page="saved" data-title="Saved">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- app.js fills these in on every page -->
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <div class="container">
+      <section class="page-intro">
+        <p class="preview-note enter">Placeholder page. Saving resources arrives in Stage 7.</p>
+        <h1 class="enter" style="--i:1">Saved</h1>
+        <p class="lead enter" style="--i:2">Your saved resources will appear here.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>
