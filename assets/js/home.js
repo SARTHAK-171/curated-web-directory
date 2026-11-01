@@ -1,13 +1,12 @@
 // home.js — extra code that only the homepage needs.
 //
-// For now it does one job: it builds the six category cards from
-// data/categories.json (the same file that feeds the header dropdown and the
-// footer), so the category names, icons and descriptions live in ONE place.
-//
-// It does NOT load resources. Stage 3 will do that, and will fill in the
-// resource counts using the empty "count" slot that each card already has.
+// It builds the six category cards from data/categories.json (the same file
+// that feeds the header dropdown and footer), then loads resources.json to fill
+// each card’s resource count. Category navigation still works if resources fail
+// to load or fail validation.
 
-import { loadCategories, categoryUrl } from "./layout.js";
+import { categoryUrl } from "./layout.js";
+import { loadCategories, loadResources } from "./data.js";
 import { iconHTML } from "./icons.js";
 import { setupScrollReveal } from "./motion.js";
 
@@ -74,6 +73,21 @@ async function renderCategories() {
 
     grid.replaceChildren(...categories.map(buildCategoryCard));
     setupScrollReveal(); // the new cards are not on the page yet when app.js runs, so set them up now
+
+    try {
+      const resources = await loadResources();
+      for (const count of grid.querySelectorAll("[data-category-count]")) {
+        const total = resources.filter(
+          (resource) => resource.category === count.dataset.categoryCount,
+        ).length;
+        count.textContent = `${total} ${total === 1 ? "resource" : "resources"}`;
+        count.hidden = false;
+      }
+    } catch (error) {
+      // Category navigation remains usable if the resource file is unavailable
+      // or invalid. Keep the count slots hidden rather than displaying guesses.
+      console.error("Resource data is unavailable; category counts were not shown.", error);
+    }
   } catch (error) {
     console.warn("Could not show the category cards:", error);
     showMessage("The categories could not be loaded.");

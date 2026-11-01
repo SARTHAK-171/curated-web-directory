@@ -8,31 +8,14 @@ import {
   SAVED_STORAGE_KEY,
 } from "./config.js";
 import { iconHTML } from "./icons.js";
+import { loadCategories } from "./data.js";
 
 
 // ---------------------------------------------------------------
 // Categories
-// The names live in data/categories.json (one place to edit).
-// fetch() downloads the file. We do it only once and share the result with
-// the dropdown and the footer. (This moves to data.js in Stage 3.)
+// The shared loader validates and caches data/categories.json.
 // ---------------------------------------------------------------
-let categoriesPromise = null;
-
-export function loadCategories() {
-  if (!categoriesPromise) {
-    categoriesPromise = fetch("data/categories.json")
-      .then((response) => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
-      })
-      .then((list) => {
-        if (!Array.isArray(list)) throw new Error("categories.json must be a list");
-        // Skip any broken entries instead of crashing
-        return list.filter((category) => category && typeof category.name === "string");
-      });
-  }
-  return categoriesPromise;
-}
+export { loadCategories };
 
 export function categoryUrl(category) {
   // encodeURIComponent makes names like "Study & Learning" safe inside a URL
