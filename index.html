@@ -15,8 +15,10 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/home.css">
   <!-- type="module" scripts load after the page is ready -->
   <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/home.js"></script>
 </head>
 <body data-page="index">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -25,199 +27,319 @@
   <header id="site-header" class="site-header"></header>
 
   <main id="main">
-    <div class="container">
-      <section class="page-intro">
-        <p class="preview-note enter">Stage 1.5 — design system check. The real homepage arrives in Stage 2.</p>
-        <p class="eyebrow enter" style="--i:1">A curated web directory</p>
-        <h1 class="enter" style="--i:2">Discover the internet. <span class="muted-line">Find your next favourite tool.</span></h1>
-        <p class="lead enter" style="--i:3">
-          A curated collection of useful tools, AI platforms, learning resources
-          and interesting corners of the internet. Less searching, more discovering.
-        </p>
-        <div class="button-row enter" style="--i:4">
-          <a class="btn btn-primary" href="explore.html">Explore Resources <span class="icon-nudge" data-icon="arrow-right"></span></a>
-          <a class="btn btn-secondary" href="#categories">Browse categories</a>
-        </div>
-      </section>
 
-      <section class="section section-tight" aria-label="Search">
-        <div class="enter" style="--i:5">
-        <form class="search" role="search" action="explore.html" method="get" data-search>
-          <label class="visually-hidden" for="search-input">Search resources</label>
-          <div class="search-field">
-            <span class="search-icon" data-icon="search"></span>
-            <input class="search-input" id="search-input" type="search" name="q"
-                   placeholder="Search tools, websites, topics…" autocomplete="off"
-                   enterkeyhint="search" spellcheck="false">
-            <button class="search-clear" type="button" aria-label="Clear search" data-icon="x" hidden></button>
-            <kbd class="search-hint" aria-hidden="true">/</kbd>
-            <button class="search-submit" type="submit" aria-label="Search" data-icon="arrow-right"></button>
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow enter">A curated web directory</p>
+          <h1 id="hero-heading" class="enter" style="--i:1">
+            Discover the internet.
+            <span class="muted-line">Find your next favourite tool.</span>
+          </h1>
+          <p class="lead enter" style="--i:2">
+            A curated collection of useful tools, AI platforms, learning resources
+            and interesting corners of the internet. Less searching, more discovering.
+          </p>
+          <div class="button-row enter" style="--i:3">
+            <a class="btn btn-primary" href="explore.html">Explore Resources <span class="icon-nudge" data-icon="arrow-right"></span></a>
+            <a class="btn btn-secondary" href="#categories">Browse Categories</a>
           </div>
-          <div class="search-suggestions">
-            <span class="mono-label">Try</span>
-            <button class="chip chip-button" type="button" data-search-suggestion="AI coding">AI coding</button>
-            <button class="chip chip-button" type="button" data-search-suggestion="learn Python">learn Python</button>
-            <button class="chip chip-button" type="button" data-search-suggestion="browser games">browser games</button>
+        </div>
+
+        <!-- Search: the form sends the visitor to Explore (search-box.js adds the extras) -->
+        <div class="hero-search enter" style="--i:4">
+          <form class="search" role="search" action="explore.html" method="get" data-search>
+            <label class="visually-hidden" for="search-input">Search resources</label>
+            <div class="search-field">
+              <span class="search-icon" data-icon="search"></span>
+              <input class="search-input" id="search-input" type="search" name="q"
+                     placeholder="Search tools, websites, topics…" autocomplete="off"
+                     enterkeyhint="search" spellcheck="false">
+              <button class="search-clear" type="button" aria-label="Clear search" data-icon="x" hidden></button>
+              <kbd class="search-hint" aria-hidden="true">/</kbd>
+              <button class="search-submit" type="submit" aria-label="Search" data-icon="arrow-right"></button>
+            </div>
+            <div class="search-suggestions">
+              <span class="mono-label">Try</span>
+              <button class="chip chip-button" type="button" data-search-suggestion="AI coding">AI coding</button>
+              <button class="chip chip-button" type="button" data-search-suggestion="learn Python">learn Python</button>
+              <button class="chip chip-button" type="button" data-search-suggestion="browser games">browser games</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Decorative picture of the Explore page, made of plain shapes. No words, no claims. -->
+        <div class="hero-visual enter" style="--i:3" aria-hidden="true">
+          <div class="mock">
+            <div class="mock-search">
+              <span data-icon="search"></span>
+              <span class="mock-bar w-50"></span>
+            </div>
+            <div class="mock-chips">
+              <span class="mock-chip is-lime"></span>
+              <span class="mock-chip is-violet"></span>
+              <span class="mock-chip"></span>
+            </div>
+            <div class="mock-rows">
+              <div class="mock-row is-highlight">
+                <span class="mock-tile"></span>
+                <span class="mock-lines"><span class="mock-bar is-strong w-60"></span><span class="mock-bar w-80"></span></span>
+                <span class="mock-heart is-saved" data-icon="heart-filled"></span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-tile"></span>
+                <span class="mock-lines"><span class="mock-bar is-strong w-50"></span><span class="mock-bar w-60"></span></span>
+                <span class="mock-heart" data-icon="heart"></span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-tile"></span>
+                <span class="mock-lines"><span class="mock-bar is-strong w-60"></span><span class="mock-bar w-80"></span></span>
+                <span class="mock-heart" data-icon="heart"></span>
+              </div>
+            </div>
           </div>
-        </form>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <hr class="divider">
-
-      <section class="section" id="categories" aria-labelledby="categories-heading" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Components</p>
-          <h2 id="categories-heading">Category cards</h2>
-          <p>Three samples. These are real links: they open Explore with that category in the address bar. Stage 2 builds all six from <code>categories.json</code>.</p>
+    <!-- 2. Categories (home.js builds the six cards from data/categories.json) -->
+    <section class="section" id="categories" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Browse by category</p>
+          <h2 id="categories-heading">Six places to start</h2>
+          <p>Every resource has one main category. Pick one to see what is inside.</p>
         </div>
-        <ul class="card-grid" data-reveal-stagger>
-          <li>
-            <a class="category-card" href="explore.html?category=AI">
-              <span class="category-card-top">
-                <span class="icon-tile" data-icon="sparkles"></span>
-                <span class="arrow" data-icon="arrow-up-right"></span>
-              </span>
-              <h3>AI</h3>
-              <p>AI tools, assistants, models and creative AI platforms.</p>
-              <p class="mono-label">— resources</p>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="explore.html?category=Developer">
-              <span class="category-card-top">
-                <span class="icon-tile" data-icon="code"></span>
-                <span class="arrow" data-icon="arrow-up-right"></span>
-              </span>
-              <h3>Developer</h3>
-              <p>Coding tools, APIs, hosting, documentation and developer utilities.</p>
-              <p class="mono-label">— resources</p>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="explore.html?category=Cybersecurity">
-              <span class="category-card-top">
-                <span class="icon-tile" data-icon="shield-lock"></span>
-                <span class="arrow" data-icon="arrow-up-right"></span>
-              </span>
-              <h3>Cybersecurity</h3>
-              <p>Ethical hacking labs, security learning, networking and Linux.</p>
-              <p class="mono-label">— resources</p>
-            </a>
-          </li>
-        </ul>
-      </section>
+        <ul class="card-grid" id="category-grid" data-reveal-stagger></ul>
+      </div>
+    </section>
 
-      <section class="section" aria-labelledby="resources-heading" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Components</p>
-          <h2 id="resources-heading">Resource cards</h2>
-          <p>Design samples with placeholder content, not real resources. The dashed “Unverified” chip marks provisional data.</p>
+    <!-- 3. Featured discoveries (layout only: real resources arrive in a later stage) -->
+    <section class="section" id="featured" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="section-head-row" data-reveal>
+          <div class="section-head">
+            <p class="eyebrow">Featured</p>
+            <h2 id="featured-heading">Featured discoveries</h2>
+            <p>Resources picked out as worth a look.</p>
+          </div>
+          <a class="link-arrow" href="explore.html?sort=featured">View all resources <span data-icon="arrow-right"></span></a>
         </div>
-        <ul class="card-grid" data-reveal-stagger>
+        <ul class="card-grid" id="featured-grid" aria-hidden="true" data-reveal-stagger>
           <li>
-            <article class="resource-card">
+            <article class="resource-card is-skeleton">
               <div class="resource-card-top">
-                <span class="monogram" aria-hidden="true">E</span>
-                <span class="heart is-saved" data-icon="heart-filled"></span>
-              </div>
-              <div class="resource-card-body">
-                <h3>Example tool</h3>
-                <p class="mono-label">Developer</p>
-                <p>A short, clear description that explains why this resource is useful, kept to two lines.</p>
-              </div>
-              <div class="resource-card-footer">
-                <span class="chip chip-lime">Free</span>
-                <span class="chip chip-dashed">Unverified</span>
-                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="resource-card">
-              <div class="resource-card-top">
-                <span class="monogram" aria-hidden="true">S</span>
+                <span class="monogram"></span>
                 <span class="heart" data-icon="heart"></span>
               </div>
               <div class="resource-card-body">
-                <h3>Sample resource</h3>
-                <p class="mono-label">Study &amp; Learning</p>
-                <p>Another placeholder description. Long text is trimmed so that every card keeps the same height in a grid, however much is written here.</p>
+                <span class="skeleton skeleton-lg w-60"></span>
+                <span class="skeleton w-30"></span>
+                <span class="skeleton w-100"></span>
+                <span class="skeleton w-80"></span>
               </div>
               <div class="resource-card-footer">
-                <span class="chip chip-violet">Freemium</span>
-                <span class="chip chip-dashed">Unverified</span>
-                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
+                <span class="skeleton skeleton-pill"></span>
+                <span class="skeleton w-20 push-right"></span>
               </div>
             </article>
           </li>
           <li>
-            <article class="resource-card">
+            <article class="resource-card is-skeleton">
               <div class="resource-card-top">
-                <span class="monogram" aria-hidden="true">P</span>
+                <span class="monogram"></span>
                 <span class="heart" data-icon="heart"></span>
               </div>
               <div class="resource-card-body">
-                <h3>Placeholder</h3>
-                <p class="mono-label">AI</p>
-                <p>Cards lift slightly and brighten their border on hover. Hover over this one to see it.</p>
+                <span class="skeleton skeleton-lg w-60"></span>
+                <span class="skeleton w-30"></span>
+                <span class="skeleton w-100"></span>
+                <span class="skeleton w-80"></span>
               </div>
               <div class="resource-card-footer">
-                <span class="chip chip-neutral">Paid</span>
-                <span class="chip chip-dashed">Unverified</span>
-                <span class="visit">Visit <span data-icon="arrow-up-right"></span></span>
+                <span class="skeleton skeleton-pill"></span>
+                <span class="skeleton w-20 push-right"></span>
+              </div>
+            </article>
+          </li>
+          <li class="only-desktop">
+            <article class="resource-card is-skeleton">
+              <div class="resource-card-top">
+                <span class="monogram"></span>
+                <span class="heart" data-icon="heart"></span>
+              </div>
+              <div class="resource-card-body">
+                <span class="skeleton skeleton-lg w-60"></span>
+                <span class="skeleton w-30"></span>
+                <span class="skeleton w-100"></span>
+                <span class="skeleton w-80"></span>
+              </div>
+              <div class="resource-card-footer">
+                <span class="skeleton skeleton-pill"></span>
+                <span class="skeleton w-20 push-right"></span>
               </div>
             </article>
           </li>
         </ul>
-      </section>
+        <p class="section-note">Featured resources will appear here once they have been added.</p>
+      </div>
+    </section>
 
-      <section class="section" aria-labelledby="buttons-heading" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Components</p>
-          <h2 id="buttons-heading">Buttons and chips</h2>
+    <!-- 4. Discovery shortcuts (plain links for now; later stages make Explore read the address) -->
+    <section class="section" id="interests" aria-labelledby="interests-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Shortcuts</p>
+          <h2 id="interests-heading">Explore by interest</h2>
+          <p>Jump straight to a kind of resource.</p>
         </div>
-        <div class="button-row spaced-after">
-          <button class="btn btn-primary" type="button">Primary</button>
-          <button class="btn btn-secondary" type="button">Secondary</button>
-          <button class="btn btn-ghost" type="button">Ghost</button>
-          <button class="btn btn-secondary" type="button" disabled>Disabled</button>
-        </div>
-        <div class="chip-row">
-          <span class="chip chip-lime">Free</span>
-          <span class="chip chip-violet">Freemium</span>
-          <span class="chip chip-neutral">Paid</span>
-          <span class="chip chip-dashed">Unverified</span>
-          <span class="chip chip-lime">Selected filter <span data-icon="x"></span></span>
-          <span class="chip">Tag</span>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="colour-heading" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Foundations</p>
-          <h2 id="colour-heading">Colour and type</h2>
-        </div>
-        <ul class="swatch-grid spaced-after">
-          <li class="swatch swatch-bg">Page <code>#09090d</code></li>
-          <li class="swatch swatch-surface-1">Surface 1 <code>#13131a</code></li>
-          <li class="swatch swatch-surface-2">Surface 2 <code>#1a1a23</code></li>
-          <li class="swatch swatch-surface-3">Surface 3 <code>#22222d</code></li>
-          <li class="swatch swatch-lime">Lime <code>#b8ff6a</code></li>
-          <li class="swatch swatch-violet">Violet <code>#a58fff</code></li>
-          <li class="swatch swatch-text-1">Text 1 <code>#f3f2f8</code></li>
-          <li class="swatch swatch-text-2">Text 2 <code>#a8a6b8</code></li>
-          <li class="swatch swatch-text-3">Text 3 <code>#86849a</code></li>
+        <ul class="interest-grid" data-reveal-stagger>
+          <li>
+            <a class="interest" href="explore.html?category=AI">
+              <span class="icon-tile" data-icon="sparkles"></span>
+              <span class="interest-text">
+                <strong>AI tools</strong>
+                <span class="mono-label">Category</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?category=Developer&amp;tag=Web%20development">
+              <span class="icon-tile" data-icon="world-www"></span>
+              <span class="interest-text">
+                <strong>Web development</strong>
+                <span class="mono-label">Category + tag</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?tag=Creative">
+              <span class="icon-tile" data-icon="palette"></span>
+              <span class="interest-text">
+                <strong>Creative tools</strong>
+                <span class="mono-label">Tag</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?category=Cybersecurity&amp;tag=Labs">
+              <span class="icon-tile" data-icon="terminal-2"></span>
+              <span class="interest-text">
+                <strong>Cybersecurity labs</strong>
+                <span class="mono-label">Category + tag</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?category=Study%20%26%20Learning">
+              <span class="icon-tile" data-icon="book-2"></span>
+              <span class="interest-text">
+                <strong>Learning platforms</strong>
+                <span class="mono-label">Category</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?pricing=Free">
+              <span class="icon-tile" data-icon="gift"></span>
+              <span class="interest-text">
+                <strong>Free resources</strong>
+                <span class="mono-label">Pricing</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?openSource=true">
+              <span class="icon-tile" data-icon="git-fork"></span>
+              <span class="interest-text">
+                <strong>Open source</strong>
+                <span class="mono-label">Filter</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="interest" href="explore.html?sort=recent">
+              <span class="icon-tile" data-icon="clock"></span>
+              <span class="interest-text">
+                <strong>Recently added</strong>
+                <span class="mono-label">Sort</span>
+              </span>
+              <span class="arrow" data-icon="arrow-up-right"></span>
+            </a>
+          </li>
         </ul>
-        <div class="type-sample">
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <p>Body text is set in Geist at 16px with generous line spacing, so it stays comfortable to read.</p>
-          <p class="mono-label">Mono label · Geist Mono</p>
+      </div>
+    </section>
+
+    <!-- 5. Recently added (layout only) -->
+    <section class="section" id="recent" aria-labelledby="recent-heading">
+      <div class="container split">
+        <div data-reveal>
+          <div class="section-head">
+            <p class="eyebrow">New</p>
+            <h2 id="recent-heading">Recently added</h2>
+            <p>The newest resources, with the date each one was added.</p>
+          </div>
+          <a class="link-arrow" href="explore.html?sort=recent">See everything by date <span data-icon="arrow-right"></span></a>
+          <p class="section-note">New resources will appear here once they have been added.</p>
         </div>
-      </section>
-    </div>
+        <ul class="recent-list" aria-hidden="true" data-reveal-stagger>
+            <li class="recent-row">
+              <span class="monogram"></span>
+              <span class="recent-lines">
+                <span class="skeleton skeleton-lg w-40"></span>
+                <span class="skeleton w-60"></span>
+              </span>
+              <span class="recent-date">
+                <span class="mono-label">Added</span>
+                <span class="skeleton w-60"></span>
+              </span>
+            </li>
+            <li class="recent-row">
+              <span class="monogram"></span>
+              <span class="recent-lines">
+                <span class="skeleton skeleton-lg w-50"></span>
+                <span class="skeleton w-30"></span>
+              </span>
+              <span class="recent-date">
+                <span class="mono-label">Added</span>
+                <span class="skeleton w-60"></span>
+              </span>
+            </li>
+            <li class="recent-row">
+              <span class="monogram"></span>
+              <span class="recent-lines">
+                <span class="skeleton skeleton-lg w-30"></span>
+                <span class="skeleton w-50"></span>
+              </span>
+              <span class="recent-date">
+                <span class="mono-label">Added</span>
+                <span class="skeleton w-60"></span>
+              </span>
+            </li>
+            <li class="recent-row">
+              <span class="monogram"></span>
+              <span class="recent-lines">
+                <span class="skeleton skeleton-lg w-60"></span>
+                <span class="skeleton w-40"></span>
+              </span>
+              <span class="recent-date">
+                <span class="mono-label">Added</span>
+                <span class="skeleton w-60"></span>
+              </span>
+            </li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer id="site-footer"></footer>

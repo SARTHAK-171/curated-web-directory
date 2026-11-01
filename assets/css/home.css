@@ -1,0 +1,376 @@
+/* ==========================================================================
+   home.css — layout that only the homepage uses. It is loaded after
+   style.css and components.css, and reuses their colours, spacing and cards.
+   ========================================================================== */
+
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  padding-block: clamp(2.5rem, 1rem + 6vw, 5.5rem) clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+  overflow: hidden;                   /* keeps the dot grid inside the hero */
+}
+
+/* A very faint dot grid that fades out towards the edges */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 30%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 70% 80% at 72% 30%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;                 /* sits above the dot grid */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Break the headline into evenly sized lines, so no single word is left alone */
+.hero h1,
+.hero h1 .muted-line {
+  text-wrap: balance;
+}
+
+.hero-copy .lead {
+  margin-bottom: var(--space-5);
+}
+
+.hero-search {
+  margin-top: var(--space-6);
+  max-width: 40rem;
+}
+
+/* Primary button first, full width on small phones so it is easy to tap */
+@media (max-width: 479px) {
+  .hero-copy .button-row .btn {
+    width: 100%;
+  }
+}
+
+/* Desktop: text and search on the left, illustration on the right */
+@media (min-width: 960px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+  }
+
+  .hero-copy,
+  .hero-search {
+    grid-column: 1;
+  }
+
+  .hero-visual {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+
+
+/* ---------- Hero illustration ----------
+   A tiny picture of the Explore page, built from plain shapes. It has no
+   words, so it cannot make claims about any resource. It is hidden from
+   screen readers (aria-hidden in the HTML) and on screens too small for it. */
+
+.hero-visual {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .hero-visual {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 26rem;
+    justify-self: end;
+  }
+
+  /* Soft violet glow behind the panel */
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: -3rem -2rem;
+    background: radial-gradient(closest-side, rgba(165, 143, 255, 0.20), transparent);
+    pointer-events: none;
+  }
+}
+
+.mock {
+  position: relative;
+  padding: 1rem;
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.85);
+}
+
+/* A hairline of lime-to-violet along the top edge of the panel */
+.mock::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lime), var(--violet), transparent);
+  opacity: 0.55;
+}
+
+.mock-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 2.75rem;
+  padding: 0 0.9rem;
+  margin-bottom: var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-3);
+}
+
+.mock-chips {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.mock-chip {
+  width: 3.25rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.mock-chip.is-lime {
+  background: var(--lime-tint);
+  border: 1px solid var(--lime-border);
+}
+
+.mock-chip.is-violet {
+  background: var(--violet-tint);
+  border: 1px solid var(--violet-border);
+}
+
+.mock-rows {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.mock-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.85rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.mock-row.is-highlight {
+  border-color: var(--border-strong);
+}
+
+.mock-tile {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-3);
+}
+
+.mock-lines {
+  flex: 1;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.mock-bar {
+  display: block;
+  height: 0.5rem;
+  border-radius: 4px;
+  background: var(--surface-3);
+}
+
+.mock-bar.is-strong {
+  background: #34344a;
+}
+
+.mock-heart {
+  flex: none;
+  color: var(--text-3);
+  opacity: 0.6;
+}
+
+.mock-heart.is-saved {
+  color: var(--lime);
+  opacity: 1;
+}
+
+
+/* ---------- Discovery shortcuts ("Explore by interest") ---------- */
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 400px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .interest-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.interest-grid > li {
+  display: flex;
+}
+
+.interest {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 3.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--text-1);
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease), background-color var(--dur-base) ease,
+    border-color var(--dur-base) ease;
+}
+
+.interest:hover {
+  transform: translateY(-2px);
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.interest .icon-tile {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.interest:hover .icon-tile {
+  color: var(--lime);
+}
+
+.interest-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.interest-text strong {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 550;
+  line-height: 1.3;
+}
+
+/* Tells the visitor what kind of shortcut it is: Category, Pricing, Tag... */
+.interest-text .mono-label {
+  font-size: 0.75rem;
+}
+
+.interest .arrow {
+  flex: none;
+  color: var(--text-3);
+  transition: transform var(--dur-base) var(--ease), color var(--dur-base) ease;
+}
+
+.interest .arrow .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.interest:hover .arrow {
+  color: var(--text-1);
+  transform: translate(2px, -2px);
+}
+
+
+/* ---------- Recently added ---------- */
+
+/* Heading on the left, list on the right (stacked on phones and tablets) */
+.split {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 960px) {
+  .split {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: var(--space-7);
+    align-items: start;
+  }
+}
+
+.split .link-arrow {
+  margin-top: var(--space-5);
+}
+
+.recent-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.recent-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 1rem 1.25rem;
+}
+
+.recent-row + .recent-row {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.recent-row .monogram {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.recent-lines {
+  flex: 1;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.recent-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: 5rem;
+}
+
+.recent-date .mono-label {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 479px) {
+  .recent-date {
+    display: none;
+  }
+}

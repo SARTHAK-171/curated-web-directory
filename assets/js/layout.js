@@ -34,7 +34,7 @@ export function loadCategories() {
   return categoriesPromise;
 }
 
-function categoryUrl(category) {
+export function categoryUrl(category) {
   // encodeURIComponent makes names like "Study & Learning" safe inside a URL
   return `explore.html?category=${encodeURIComponent(category.name)}`;
 }
@@ -85,7 +85,7 @@ export function buildHeader() {
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="nav-list"></ul>
         <button class="btn btn-secondary btn-sm" type="button" id="surprise-button"
-                disabled title="Coming in Stage 8">
+                disabled title="Coming soon">
           ${iconHTML("arrows-shuffle")}Surprise Me
         </button>
       </nav>
@@ -334,9 +334,10 @@ export function buildFooter() {
       <div>
         <h2 class="footer-heading">Privacy</h2>
         <p class="footer-text">
-          Saved resources are stored locally in your own browser, on this
-          device only. This site has no accounts and does not use analytics
-          or tracking scripts.
+          Saved resources are kept in your browser's localStorage on this
+          device only. They are not synced between devices and can be lost if
+          you clear your browser data. This site has no accounts and does not
+          use analytics or tracking scripts.
         </p>
       </div>
     </div>
