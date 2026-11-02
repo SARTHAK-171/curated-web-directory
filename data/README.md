@@ -51,4 +51,4 @@ Pricing, free-trial status and open-source status are separate properties. For e
 
 Run the website through a local HTTP server (for example, VS Code Live Server). Fetching JSON is not reliable from a `file://` URL.
 
-No example resource is included in the production JSON. Add only researched, verified resources.
+The production JSON contains the initial curated collection. See `data/VERIFICATION.md` for the source links and point-in-time notes used when reviewing those entries. Recheck pricing, features and platform availability before relying on them, because external services can change.

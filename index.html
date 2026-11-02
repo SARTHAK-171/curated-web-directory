@@ -115,7 +115,7 @@
       </div>
     </section>
 
-    <!-- 3. Featured discoveries (layout only: real resources arrive in a later stage) -->
+    <!-- 3. Featured discoveries (selected resources are loaded from resources.json) -->
     <section class="section" id="featured" aria-labelledby="featured-heading">
       <div class="container">
         <div class="section-head-row" data-reveal>
@@ -126,67 +126,12 @@
           </div>
           <a class="link-arrow" href="explore.html?sort=featured">View all resources <span data-icon="arrow-right"></span></a>
         </div>
-        <ul class="card-grid" id="featured-grid" aria-hidden="true" data-reveal-stagger>
-          <li>
-            <article class="resource-card is-skeleton">
-              <div class="resource-card-top">
-                <span class="monogram"></span>
-                <span class="heart" data-icon="heart"></span>
-              </div>
-              <div class="resource-card-body">
-                <span class="skeleton skeleton-lg w-60"></span>
-                <span class="skeleton w-30"></span>
-                <span class="skeleton w-100"></span>
-                <span class="skeleton w-80"></span>
-              </div>
-              <div class="resource-card-footer">
-                <span class="skeleton skeleton-pill"></span>
-                <span class="skeleton w-20 push-right"></span>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="resource-card is-skeleton">
-              <div class="resource-card-top">
-                <span class="monogram"></span>
-                <span class="heart" data-icon="heart"></span>
-              </div>
-              <div class="resource-card-body">
-                <span class="skeleton skeleton-lg w-60"></span>
-                <span class="skeleton w-30"></span>
-                <span class="skeleton w-100"></span>
-                <span class="skeleton w-80"></span>
-              </div>
-              <div class="resource-card-footer">
-                <span class="skeleton skeleton-pill"></span>
-                <span class="skeleton w-20 push-right"></span>
-              </div>
-            </article>
-          </li>
-          <li class="only-desktop">
-            <article class="resource-card is-skeleton">
-              <div class="resource-card-top">
-                <span class="monogram"></span>
-                <span class="heart" data-icon="heart"></span>
-              </div>
-              <div class="resource-card-body">
-                <span class="skeleton skeleton-lg w-60"></span>
-                <span class="skeleton w-30"></span>
-                <span class="skeleton w-100"></span>
-                <span class="skeleton w-80"></span>
-              </div>
-              <div class="resource-card-footer">
-                <span class="skeleton skeleton-pill"></span>
-                <span class="skeleton w-20 push-right"></span>
-              </div>
-            </article>
-          </li>
-        </ul>
-        <p class="section-note">Featured resources will appear here once they have been added.</p>
+        <ul class="card-grid" id="featured-grid" aria-live="polite" data-reveal-stagger></ul>
+        <p class="section-note" id="featured-note" hidden>No featured resources have been selected yet.</p>
       </div>
     </section>
 
-    <!-- 4. Discovery shortcuts (plain links for now; later stages make Explore read the address) -->
+    <!-- 4. Discovery shortcuts (links pre-filter the Explore page) -->
     <section class="section" id="interests" aria-labelledby="interests-heading">
       <div class="container">
         <div class="section-head" data-reveal>
@@ -246,7 +191,7 @@
             </a>
           </li>
           <li>
-            <a class="interest" href="explore.html?pricing=Free">
+            <a class="interest" href="explore.html?pricing=free">
               <span class="icon-tile" data-icon="gift"></span>
               <span class="interest-text">
                 <strong>Free resources</strong>
@@ -279,7 +224,7 @@
       </div>
     </section>
 
-    <!-- 5. Recently added (layout only) -->
+    <!-- 5. Recently added (loaded from resources.json) -->
     <section class="section" id="recent" aria-labelledby="recent-heading">
       <div class="container split">
         <div data-reveal>
@@ -289,54 +234,9 @@
             <p>The newest resources, with the date each one was added.</p>
           </div>
           <a class="link-arrow" href="explore.html?sort=recent">See everything by date <span data-icon="arrow-right"></span></a>
-          <p class="section-note">New resources will appear here once they have been added.</p>
+          <p class="section-note" id="recent-note" hidden>No resources have been added yet.</p>
         </div>
-        <ul class="recent-list" aria-hidden="true" data-reveal-stagger>
-            <li class="recent-row">
-              <span class="monogram"></span>
-              <span class="recent-lines">
-                <span class="skeleton skeleton-lg w-40"></span>
-                <span class="skeleton w-60"></span>
-              </span>
-              <span class="recent-date">
-                <span class="mono-label">Added</span>
-                <span class="skeleton w-60"></span>
-              </span>
-            </li>
-            <li class="recent-row">
-              <span class="monogram"></span>
-              <span class="recent-lines">
-                <span class="skeleton skeleton-lg w-50"></span>
-                <span class="skeleton w-30"></span>
-              </span>
-              <span class="recent-date">
-                <span class="mono-label">Added</span>
-                <span class="skeleton w-60"></span>
-              </span>
-            </li>
-            <li class="recent-row">
-              <span class="monogram"></span>
-              <span class="recent-lines">
-                <span class="skeleton skeleton-lg w-30"></span>
-                <span class="skeleton w-50"></span>
-              </span>
-              <span class="recent-date">
-                <span class="mono-label">Added</span>
-                <span class="skeleton w-60"></span>
-              </span>
-            </li>
-            <li class="recent-row">
-              <span class="monogram"></span>
-              <span class="recent-lines">
-                <span class="skeleton skeleton-lg w-60"></span>
-                <span class="skeleton w-40"></span>
-              </span>
-              <span class="recent-date">
-                <span class="mono-label">Added</span>
-                <span class="skeleton w-60"></span>
-              </span>
-            </li>
-        </ul>
+        <ul class="recent-list" id="recent-list" aria-live="polite" data-reveal-stagger></ul>
       </div>
     </section>
 

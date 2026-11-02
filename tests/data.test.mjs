@@ -6,6 +6,7 @@ import {
   PRICING_VALUES,
   validateResources,
 } from "../assets/js/data.js";
+import { filterResources } from "../assets/js/directory.js";
 import { readFile } from "node:fs/promises";
 
 const validResource = {
@@ -103,6 +104,26 @@ assert.deepEqual(categories.map((item) => item.name), APPROVED_CATEGORIES);
 const productionResources = JSON.parse(
   await readFile(new URL("../data/resources.json", import.meta.url), "utf8"),
 );
-assert.deepEqual(productionResources, [], "Production resources must stay empty until reviewed entries are added.");
+const productionReport = validateResources(productionResources);
+assert.equal(productionReport.valid, true, productionReport.errors.join("\n"));
+assert.ok(productionResources.length >= 30, "Stage 5 should publish a useful initial collection.");
+assert.equal(new Set(productionResources.map((item) => item.id)).size, productionResources.length);
+assert.equal(new Set(productionResources.map((item) => item.url)).size, productionResources.length, "Resources should not duplicate official URLs.");
+assert.equal(productionResources.filter((item) => item.featured).length, 3, "The homepage should have three curated featured items.");
+const defaults = { query: "", category: "", subcategory: "", pricing: "", openSource: false, platform: "", tag: "", sort: "featured" };
+assert.ok(filterResources(productionResources, { ...defaults, category: "Developer", tag: "Web development" }).length > 0, "Web development homepage shortcut should return resources.");
+assert.ok(filterResources(productionResources, { ...defaults, tag: "Creative" }).length > 0, "Creative homepage shortcut should return resources.");
+assert.ok(filterResources(productionResources, { ...defaults, category: "Cybersecurity", tag: "Labs" }).length > 0, "Cybersecurity labs homepage shortcut should return resources.");
+assert.ok(filterResources(productionResources, { ...defaults, pricing: "free" }).length > 0, "Free resources homepage shortcut should return resources.");
+assert.deepEqual(
+  new Set(productionResources.map((item) => item.category)),
+  new Set(APPROVED_CATEGORIES),
+  "Every approved category should have at least one resource.",
+);
+for (const resource of productionResources) {
+  assert.ok(resource.url.startsWith("https://"), `${resource.id} should use HTTPS.`);
+  assert.ok(resource.description.length <= 180, `${resource.id} card description should stay concise.`);
+  assert.ok(resource.lastVerified, `${resource.id} should record its verification date.`);
+}
 
-console.log("PASS: Resource schema, validation, approved categories and empty production data.");
+console.log(`PASS: Resource schema, validation, approved categories and ${productionResources.length} production resources.`);
