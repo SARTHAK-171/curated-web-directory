@@ -282,22 +282,8 @@ a:hover {
   opacity: 0;
 }
 
-/* ----- Motion: smooth page-to-page navigation -----
-   Chrome, Edge and recent Safari cross-fade between pages with this. Browsers
-   that do not support it simply navigate as normal. Off for reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
-
-  ::view-transition-old(root) {
-    animation-duration: 140ms;
-  }
-
-  ::view-transition-new(root) {
-    animation-duration: 240ms;
-  }
-}
+/* Cross-document View Transitions are intentionally disabled.
+   Browser support and opt-in state vary; normal page navigation is more reliable. */
 
 /* ----- Respect visitors who ask their device for less motion ----- */
 @media (prefers-reduced-motion: reduce) {

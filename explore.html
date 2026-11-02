@@ -4,39 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>YOUR_SITE_NAME</title>
-  <meta name="description" content="Browse every resource in the directory.">
+  <meta name="description" content="Browse and filter the curated directory of useful websites and digital resources.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#09090d">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
-
-  <!-- Start downloading the fonts right away so text does not flicker -->
   <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <!-- type="module" scripts load after the page is ready -->
+  <link rel="stylesheet" href="assets/css/explore.css">
   <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/explore.js"></script>
 </head>
 <body data-page="explore" data-title="Explore">
   <a class="skip-link" href="#main">Skip to main content</a>
-
-  <!-- app.js fills these in on every page -->
   <header id="site-header" class="site-header"></header>
 
   <main id="main">
-    <div class="container">
-      <section class="page-intro">
-        <p class="preview-note enter">Placeholder page. Instant search and filters arrive in Stages 4 and 5.</p>
-        <h1 class="enter" style="--i:1">Explore</h1>
-        <p class="lead enter" style="--i:2">Browse every resource in the directory.</p>
-        <div class="enter" style="--i:3">
-        <form class="search" role="search" action="explore.html" method="get" data-search>
+    <div class="container explore-page">
+      <section class="page-intro explore-intro" aria-labelledby="explore-heading">
+        <p class="eyebrow enter">The directory</p>
+        <h1 class="enter" id="explore-heading" style="--i:1">Explore resources</h1>
+        <p class="lead enter" style="--i:2">Search across the collection, narrow it down, and find something useful.</p>
+        <form class="search explore-search enter" role="search" action="explore.html" method="get" data-search style="--i:3">
           <label class="visually-hidden" for="search-input">Search resources</label>
           <div class="search-field">
             <span class="search-icon" data-icon="search"></span>
             <input class="search-input" id="search-input" type="search" name="q"
-                   placeholder="Search tools, websites, topics…" autocomplete="off"
+                   placeholder="Search names, descriptions, categories, tags…" autocomplete="off"
                    enterkeyhint="search" spellcheck="false">
             <button class="search-clear" type="button" aria-label="Clear search" data-icon="x" hidden></button>
             <kbd class="search-hint" aria-hidden="true">/</kbd>
@@ -49,6 +44,71 @@
             <button class="chip chip-button" type="button" data-search-suggestion="browser games">browser games</button>
           </div>
         </form>
+      </section>
+
+      <section class="directory" aria-label="Resource directory">
+        <div class="directory-toolbar">
+          <div>
+            <p class="eyebrow">Refine your search</p>
+            <h2>Find your next useful thing<span class="heading-period">.</span></h2>
+          </div>
+          <button class="btn btn-ghost btn-sm clear-filters" id="clear-filters" type="button" disabled>
+            Clear filters
+          </button>
+        </div>
+
+        <div class="filter-panel" aria-label="Resource filters">
+          <div class="filter-field">
+            <label for="filter-category">Category</label>
+            <select id="filter-category">
+              <option value="">All categories</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-subcategory">Subcategory</label>
+            <select id="filter-subcategory" disabled>
+              <option value="">All subcategories</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-pricing">Pricing</label>
+            <select id="filter-pricing">
+              <option value="">Any pricing</option>
+              <option value="free">Free</option>
+              <option value="freemium">Freemium</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-platform">Platform</label>
+            <select id="filter-platform">
+              <option value="">Any platform</option>
+            </select>
+          </div>
+          <label class="toggle-filter" for="filter-open-source">
+            <input id="filter-open-source" type="checkbox">
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span>Open source</span>
+          </label>
+        </div>
+
+        <div class="results-toolbar">
+          <p class="results-count" id="results-count" role="status" aria-live="polite">Loading resources…</p>
+          <div class="sort-control">
+            <label for="sort-order">Sort by</label>
+            <select id="sort-order">
+              <option value="featured">Featured</option>
+              <option value="recent">Recently added</option>
+              <option value="az">Name: A to Z</option>
+              <option value="za">Name: Z to A</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="resource-results" class="resource-grid" aria-busy="true">
+          <div class="directory-loading" aria-hidden="true">
+            <span class="loading-dot"></span><span>Loading the collection</span>
+          </div>
         </div>
       </section>
     </div>
