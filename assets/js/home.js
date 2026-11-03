@@ -5,12 +5,15 @@ import { categoryUrl } from "./layout.js";
 import { loadCategories, loadResources } from "./data.js";
 import { iconHTML } from "./icons.js";
 import { setupScrollReveal } from "./motion.js";
+import { createSaveButton, initSavedControls } from "./saved-resources.js";
+import { ACCESS_TYPE_LABELS } from "./resource-card.js";
 
 const grid = document.getElementById("category-grid");
 const featuredGrid = document.getElementById("featured-grid");
 const featuredNote = document.getElementById("featured-note");
 const recentList = document.getElementById("recent-list");
 const recentNote = document.getElementById("recent-note");
+let categoryNames = {};
 
 function buildCategoryCard(category) {
   const item = document.createElement("li");
@@ -22,6 +25,7 @@ function buildCategoryCard(category) {
   top.className = "category-card-top";
   const tile = document.createElement("span");
   tile.className = "icon-tile";
+  tile.style.setProperty("--category-accent", category.color);
   tile.innerHTML = iconHTML(category.icon);
   const arrow = document.createElement("span");
   arrow.className = "arrow";
@@ -34,7 +38,7 @@ function buildCategoryCard(category) {
   description.textContent = category.description || "";
   const count = document.createElement("p");
   count.className = "mono-label category-count";
-  count.dataset.categoryCount = category.name;
+  count.dataset.categoryCount = category.id;
   count.hidden = true;
 
   link.append(top, name, description, count);
@@ -57,7 +61,26 @@ function buildFeaturedCard(resource) {
 
   const top = document.createElement("div");
   top.className = "resource-card-top";
-  top.append(makeMonogram(resource.name));
+  const mark = makeMonogram(resource.name);
+  if (resource.image?.src && resource.image?.alt) {
+    const image = document.createElement("img");
+    image.className = "resource-card-image";
+    image.src = resource.image.src;
+    image.alt = resource.image.alt;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.referrerPolicy = "no-referrer";
+    image.addEventListener("error", () => {
+      image.remove();
+      mark.setAttribute("aria-hidden", "true");
+    }, { once: true });
+    const fallback = document.createElement("span");
+    fallback.textContent = resource.name.trim().charAt(0).toLocaleUpperCase();
+    fallback.setAttribute("aria-hidden", "true");
+    mark.replaceChildren(fallback, image);
+    mark.removeAttribute("aria-hidden");
+  }
+  top.append(mark, createSaveButton(resource));
 
   const body = document.createElement("div");
   body.className = "resource-card-body";
@@ -71,7 +94,10 @@ function buildFeaturedCard(resource) {
   footer.className = "resource-card-footer";
   const category = document.createElement("span");
   category.className = "mono-label";
-  category.textContent = resource.category;
+  category.textContent = categoryNames[resource.category] || resource.category;
+  const accessType = document.createElement("span");
+  accessType.className = "mono-label resource-access-type";
+  accessType.textContent = ACCESS_TYPE_LABELS[resource.accessType];
   const visit = document.createElement("a");
   visit.className = "visit";
   visit.href = resource.url;
@@ -82,7 +108,7 @@ function buildFeaturedCard(resource) {
   const arrow = document.createElement("span");
   arrow.innerHTML = iconHTML("arrow-up-right");
   visit.append(arrow);
-  footer.append(category, visit);
+  footer.append(category, accessType, visit);
 
   article.append(top, body, footer);
   item.append(article);
@@ -151,9 +177,11 @@ async function renderCategories() {
   try {
     const categories = await loadCategories();
     if (categories.length === 0) throw new Error("No categories found");
+    categoryNames = Object.fromEntries(categories.map((category) => [category.id, category.name]));
     grid.replaceChildren(...categories.map(buildCategoryCard));
 
     const resources = await loadResources();
+    initSavedControls(resources);
     for (const count of grid.querySelectorAll("[data-category-count]")) {
       const total = resources.filter(
         (resource) => resource.category === count.dataset.categoryCount,

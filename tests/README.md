@@ -1,15 +1,19 @@
 # Project tests
 
-These files are development checks only. They are not loaded by the website and do not add resources to `data/resources.json`.
+These checks run during development only. They are not loaded by the website and do not add content to the public directory.
 
-Run from the project root with Node.js:
+Run each command from the project root with Node.js:
 
 ```bash
 node --experimental-default-type=module tests/data.test.mjs
 node --experimental-default-type=module tests/directory.test.mjs
+node --experimental-default-type=module tests/saved.test.mjs
+node --experimental-default-type=module tests/integration.test.mjs
 ```
 
-- `data.test.mjs` checks the approved categories, resource schema validation, duplicate IDs, invalid values, date handling, and the production resource collection, including category coverage and unique IDs.
-- `directory.test.mjs` checks search, filters, empty results, and sorting.
+- `data.test.mjs` checks category IDs and fields, resource schema, unique IDs/URLs, category references, pricing, access types, image metadata, dates and the 35-resource production collection.
+- `directory.test.mjs` checks search, category/subcategory, pricing, access-type, platform, open-source and tag filters, saved-only filtering, empty results and all sort modes.
+- `saved.test.mjs` checks saving, removing, persistence across store instances, empty state data, corrupt JSON, duplicate/stale IDs, accurate counts and unavailable browser storage.
+- `integration.test.mjs` checks local HTML file references, Saved page wiring, access filter wiring and obsolete category links.
 
-The sample resources inside the test files are fixtures used to verify the code. They are not published as website content.
+These are automated static/data tests, not a replacement for opening the site in a browser. For a full manual check, run the project through a local HTTP server (for example, VS Code Live Server) and follow the Stage 6 checklist supplied with the update.

@@ -6,9 +6,8 @@ export const SITE_TAGLINE = "The Useful Internet, Organised.";
 export const SITE_DESCRIPTION =
   "A curated collection of useful tools, AI platforms, learning resources and interesting corners of the internet.";
 
-// The key under which saved resources are stored in the browser.
-// (Stage 7 builds the real save feature. For now we only read the count.)
-export const SAVED_STORAGE_KEY = "savedResources";
+// One local-only key stores stable resource IDs (never complete resource objects).
+export const SAVED_STORAGE_KEY = "orbit.savedResourceIds.v1";
 
 // Main navigation. "page" must match <body data-page="..."> in each HTML file.
 // "dropdown: true" gives the item the small arrow that opens the category list.

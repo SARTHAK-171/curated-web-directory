@@ -5,10 +5,10 @@ import {
   SITE_NAME,
   SITE_DESCRIPTION,
   NAV_ITEMS,
-  SAVED_STORAGE_KEY,
 } from "./config.js";
 import { iconHTML } from "./icons.js";
-import { loadCategories } from "./data.js";
+import { loadCategories, loadResources } from "./data.js";
+import { savedStore } from "./saved-resources.js";
 
 
 // ---------------------------------------------------------------
@@ -18,8 +18,8 @@ import { loadCategories } from "./data.js";
 export { loadCategories };
 
 export function categoryUrl(category) {
-  // encodeURIComponent makes names like "Study & Learning" safe inside a URL
-  return `explore.html?category=${encodeURIComponent(category.name)}`;
+  // Stable IDs keep category links working even if a display name changes.
+  return `explore.html?category=${encodeURIComponent(category.id)}`;
 }
 
 
@@ -28,14 +28,26 @@ export function categoryUrl(category) {
 // localStorage can hold anything (or be blocked), so read it carefully.
 // ---------------------------------------------------------------
 function getSavedCount() {
-  try {
-    const raw = localStorage.getItem(SAVED_STORAGE_KEY);
-    if (!raw) return 0;
-    const saved = JSON.parse(raw);
-    return Array.isArray(saved) ? saved.length : 0;
-  } catch (error) {
-    return 0;
-  }
+  return savedStore.count();
+}
+
+// Once the resource list is available, ignore IDs that no longer exist.
+// This also keeps the count correct on pages such as About that have no cards.
+function syncSavedCountWithResources() {
+  loadResources()
+    .then((resources) => {
+      const validIds = new Set(resources.map((resource) => resource.id));
+      const count = savedStore.count(validIds);
+      const badge = document.getElementById("saved-count");
+      if (badge) {
+        badge.textContent = String(count);
+        const link = badge.closest("a");
+        if (link) link.setAttribute("aria-label", `Saved, ${count} resources`);
+      }
+    })
+    .catch((error) => {
+      console.warn("Could not validate saved resources for the navigation count:", error);
+    });
 }
 
 
@@ -84,6 +96,7 @@ export function buildHeader() {
   }
 
   setupHeaderBehaviour(header);
+  syncSavedCountWithResources();
 }
 
 function buildNavItem(item) {

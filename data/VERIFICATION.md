@@ -1,79 +1,82 @@
-# Stage 5 resource verification notes
+# Resource and access-type verification notes
 
-**Verification pass:** 2026-11-03  
-**Source policy:** Official product pages, official documentation, and official project repositories were preferred. Pricing labels describe the availability of a usable free tier, not every paid feature. Plans, regional availability and usage limits can change; check the provider before relying on a specific feature or price.
+**Review date:** 2026-11-03  
+**Source policy:** Official product pages, official documentation and official project repositories are preferred. Pricing describes whether a usable free tier or free content is available, not whether every feature is free. Plans, regional availability and usage limits can change.
 
-The `lastVerified` field in `resources.json` records the date this collection was reviewed. This is a point-in-time check, not a guarantee that every external service will remain available.
+The `lastVerified` field in `resources.json` is a point-in-time review date, not a guarantee that a provider will keep the same features or price. Recheck the official source before relying on a specific plan or capability.
+
+## Access-type definitions
+
+- `browser`: the main resource is usable in a web browser. Downloading content from it (for example, an ebook) does not change this classification.
+- `download`: the main experience requires software to be installed or run outside the browser.
+- `both`: there is meaningful browser functionality and the provider also offers an installable app or tool that supports a useful workflow.
+
+This field is separate from `platforms`. The platforms field lists browser/operating-system availability; the access type describes whether an installed app or tool is needed or offered.
 
 ## AI
 
-| Resource | Official source | Notes |
+| Resource | Access type | Verification basis |
 |---|---|---|
-| ChatGPT | https://chatgpt.com/pricing/ | Free plan exists with feature and usage limits; paid plans add capacity. |
-| Claude | https://www.anthropic.com/pricing | Free plan exists with limited usage; paid plans add capacity. |
-| Gemini | https://gemini.google/in/subscriptions/ | Google lists a free-of-charge plan in India; limits and features vary. |
-| Perplexity | https://www.perplexity.ai/enterprise/pricing | Free plan includes basic search and cited answers; paid tiers add capabilities. |
-| NotebookLM | https://notebooklm.google.com/ | Standard access is available without a paid AI plan; usage limits and premium allowances can vary. |
-| Hugging Face | https://huggingface.co/pricing | Public Hub access is available; private storage and compute can be paid. |
-| Ollama | https://ollama.com/download and https://github.com/ollama/ollama | Local model runner has free local use; the public Ollama repository identifies an MIT licence. Optional cloud services are separately priced. |
+| ChatGPT | `both` | Browser service plus official desktop and mobile downloads. [Official downloads](https://chatgpt.com/download/) |
+| Claude | `both` | Browser service plus official desktop and mobile apps. [Official downloads](https://claude.com/download) |
+| Gemini | `both` | Browser service and official mobile app. [Official Gemini site](https://gemini.google.com/) |
+| Perplexity | `both` | Browser service and official mobile apps. [Official site](https://www.perplexity.ai/) |
+| NotebookLM | `both` | Browser notebooks plus official mobile app availability. [Official NotebookLM](https://notebooklm.google.com/) |
+| Hugging Face | `browser` | The Hub and Spaces are used through the website; local libraries and model downloads are separate developer workflows. [Official Hub](https://huggingface.co/) |
+| Ollama | `download` | The core local model runner is installed on the user's computer. [Official download page](https://ollama.com/download) |
 
 ## Developer
 
-| Resource | Official source | Notes |
+| Resource | Access type | Verification basis |
 |---|---|---|
-| GitHub | https://github.com/pricing | Free plan includes public and private repositories. |
-| Visual Studio Code | https://code.visualstudio.com/docs/supporting/faq | Free editor; official FAQ lists Windows, macOS and Linux support. |
-| MDN Web Docs | https://developer.mozilla.org/ | Free web-platform documentation and learning guides. |
-| CodePen | https://codepen.io/pricing | Free plan includes public Pens; privacy and other features are paid. |
-| StackBlitz | https://stackblitz.com/ | Browser-based development environment with free access and plan limits. |
-| Vercel | https://vercel.com/docs/plans/hobby | Hobby plan is free for personal projects; terms and limits apply. |
-| Netlify | https://www.netlify.com/pricing/ | Free plan is available with monthly usage-credit limits. |
+| GitHub | `both` | Browser-hosted repositories plus GitHub Desktop and command-line tooling. [Official GitHub Desktop](https://desktop.github.com/) |
+| Visual Studio Code | `both` | Browser-based VS Code for the Web plus the installed desktop editor. [Official VS Code for the Web](https://vscode.dev/) |
+| MDN Web Docs | `browser` | Documentation and learning material are read in the browser. [Official MDN](https://developer.mozilla.org/) |
+| CodePen | `browser` | The editor and preview experience run in the browser. [Official CodePen](https://codepen.io/) |
+| StackBlitz | `browser` | Its online development environment runs in the browser. [Official StackBlitz](https://stackblitz.com/) |
+| Vercel | `both` | Web dashboard and deployments, plus an installable command-line interface. [Official CLI docs](https://vercel.com/docs/cli) |
+| Netlify | `both` | Web dashboard and deployments, plus an installable command-line interface. [Official CLI docs](https://docs.netlify.com/cli/get-started/) |
 
 ## Cybersecurity
 
-| Resource | Official source | Notes |
+| Resource | Access type | Verification basis |
 |---|---|---|
-| PortSwigger Web Security Academy | https://portswigger.net/web-security | Free web-security training and interactive labs. |
-| TryHackMe | https://tryhackme.com/pricing | Free tier includes free rooms and limited AttackBox time; paid plans unlock more. |
-| OverTheWire | https://overthewire.org/wargames/ | Community wargames; Bandit is aimed at absolute beginners. |
-| picoCTF | https://picoctf.org/ | Educational CTF platform from Carnegie Mellon CyLab. |
-| OWASP Juice Shop | https://owasp.org/projects/juice-shop and https://github.com/juice-shop/juice-shop | MIT-licensed intentionally vulnerable training application; use only in a controlled lab. |
-| CyberChef | https://github.com/gchq/CyberChef | GCHQ project; repository identifies Apache-2.0 licence and browser-based data operations. |
+| PortSwigger Web Security Academy | `both` | Lessons and labs are browser-accessible; many practical workflows use the separately installed Burp Suite tools. [Academy](https://portswigger.net/web-security) · [Burp setup](https://portswigger.net/burp/documentation/desktop/getting-started) |
+| TryHackMe | `both` | Browser-based rooms and AttackBox are available, while some paths use installed VPN or local tools. [Official site](https://tryhackme.com/) |
+| OverTheWire | `download` | Wargames are played through SSH/terminal access rather than a browser-based challenge interface. [Official wargames](https://overthewire.org/wargames/) |
+| picoCTF | `browser` | The platform and practice challenges are accessed through the browser; optional local tools are not required for the main platform. [Official picoCTF](https://picoctf.org/) |
+| OWASP Juice Shop | `download` | The training application is normally run as a local or hosted application using its install/deployment instructions. [Project documentation](https://owasp.org/www-project-juice-shop/) |
+| CyberChef | `browser` | The primary interface is a client-side browser application. [Official project](https://gchq.github.io/CyberChef/) |
 
 ## Study & Learning
 
-| Resource | Official source | Notes |
+| Resource | Access type | Verification basis |
 |---|---|---|
-| Khan Academy | https://www.khanacademy.org/ | Free lessons and practice across academic subjects. |
-| freeCodeCamp | https://www.freecodecamp.org/ and https://github.com/freeCodeCamp/freeCodeCamp | Free interactive programming curriculum and projects; the software repository is BSD-3-Clause licensed. Curriculum content has its own copyright terms. |
-| MIT OpenCourseWare | https://ocw.mit.edu/pages/get-started/ | Free self-study course materials; no credit or certificates. |
-| CS50x | https://cs50.harvard.edu/x/faqs/ | Course can be taken free; verified edX certificates are a separate paid option. |
-| W3Schools | https://www.w3schools.com/ | Core tutorials are free; some practice and certificate features are paid. |
-| Desmos Graphing Calculator | https://www.desmos.com/calculator | Free interactive graphing calculator. |
+| Khan Academy | `both` | Browser learning platform plus official mobile applications. [Official site](https://www.khanacademy.org/) |
+| freeCodeCamp | `browser` | Lessons and coding challenges are primarily completed through the website. [Official site](https://www.freecodecamp.org/) |
+| MIT OpenCourseWare | `browser` | Course materials are browsed online; downloadable PDFs/media are content, not an installed MIT OCW application. [Official site](https://ocw.mit.edu/) |
+| CS50x | `browser` | Course instructions, lectures and submissions are accessed online; optional local development tools do not change the course's main access mode. [Official course](https://cs50.harvard.edu/x/) |
+| W3Schools | `browser` | Tutorials and browser-based examples are available on the website. [Official site](https://www.w3schools.com/) |
+| Desmos Graphing Calculator | `both` | Interactive browser calculator plus official mobile applications. [Official calculator](https://www.desmos.com/calculator) |
+| Pomofocus | `browser` | The timer and task workflow are used directly on the website. [Official site](https://pomofocus.io/) |
 
 ## Fun & Entertainment
 
-| Resource | Official source | Notes |
+| Resource | Access type | Verification basis |
 |---|---|---|
-| Radio Garden | https://radio.garden/ | Browse and listen to live radio streams; station availability varies. |
-| Internet Archive | https://archive.org/ | Digital library; access and borrowing conditions differ by item. |
-| Project Gutenberg | https://www.gutenberg.org/about/ | Free ebooks; copyright status may differ outside the United States. |
-| Neal.fun | https://neal.fun/about/ | Creator's site for interactive experiments and small web projects. |
-| itch.io | https://itch.io/docs/general/about | Independent games marketplace with free and paid titles. |
+| Radio Garden | `both` | Interactive browser globe plus official mobile apps. [Official site](https://radio.garden/) |
+| Internet Archive | `browser` | The library is browsed online; downloadable books/media are content, not an installed Archive application. [Official site](https://archive.org/) |
+| Project Gutenberg | `browser` | Books can be read online or downloaded as files; no installation is needed for the main library. [Official site](https://www.gutenberg.org/) |
+| Neal.fun | `browser` | Interactive experiments run directly in the browser. [Official site](https://neal.fun/) |
+| itch.io | `both` | Browser-based store and community plus downloadable games and the optional app. [Official site](https://itch.io/) |
+| A Soft Murmur | `browser` | The sound mixer is available through the website. [Official site](https://asoftmurmur.com/) |
+| myNoise | `both` | Browser sound generators and official mobile apps. [Official site](https://mynoise.net/) |
+| Lofi Girl | `browser` | The curated radio/live streams are available through the website. [Official site](https://www.lofigirl.com/) |
 
-## Relaxation
+## Interpretation notes
 
-| Resource | Official source | Notes |
-|---|---|---|
-| Pomofocus | https://pomofocus.io/ | Browser-based Pomodoro timer; optional features may be paid. |
-| A Soft Murmur | https://asoftmurmur.com/ | Ambient sound mixer; basic listening is available free. |
-| myNoise | https://mynoise.net/ | Adjustable sound generators; many web generators are available free. |
-| Lofi Girl | https://www.lofigirl.com/ | Official site for continuous music livestreams. |
-
-## Important interpretation notes
-
-- `free` means the listed core experience is available without a paid subscription. It does not mean every associated product, feature, certificate, app or item is free.
-- `freemium` means there is a usable free tier or free content alongside paid upgrades, usage or content.
-- `openSource: true` is used only where the relevant project has a public source repository and an identified open-source licence. A free-to-use website is not automatically open source.
-- `platforms` lists the official web experience or the operating systems supported by the named application. It does not imply that every feature is identical across platforms.
-- The collection uses official landing pages as the primary outgoing links. Some details (especially pricing and feature limits) can change without notice.
+- `free` means the listed core experience is available without a paid subscription. It does not mean every feature, item, certificate, app or associated service is free.
+- `freemium` means there is a usable free tier or free content alongside paid upgrades, limits or content.
+- `openSource: true` is used only when the relevant project has a public source repository and an identified open-source licence. A free website is not automatically open source.
+- Some resources offer optional installed tools that are not required for their main browser workflow. The access type reflects the meaningful use described above, not every possible integration.
+- Official product details and access options can change. Recheck the provider's page before making decisions based on current pricing or availability.

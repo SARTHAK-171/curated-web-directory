@@ -1,16 +1,8 @@
 // data.js — shared data loading and validation for the directory.
 // Edit data/categories.json and data/resources.json; do not duplicate their data elsewhere.
 
-export const APPROVED_CATEGORIES = Object.freeze([
-  "AI",
-  "Developer",
-  "Cybersecurity",
-  "Study & Learning",
-  "Fun & Entertainment",
-  "Relaxation",
-]);
-
 export const PRICING_VALUES = Object.freeze(["free", "freemium", "paid"]);
+export const ACCESS_TYPE_VALUES = Object.freeze(["browser", "download", "both"]);
 export const PLATFORM_VALUES = Object.freeze([
   "Web",
   "Windows",
@@ -35,10 +27,12 @@ const REQUIRED_STRING_FIELDS = [
   "category",
   "subcategory",
   "pricing",
+  "accessType",
   "url",
 ];
 const REQUIRED_BOOLEAN_FIELDS = ["freeTrial", "openSource", "featured"];
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const CATEGORY_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export class DataLoadError extends Error {
   constructor(message, { file, cause } = {}) {
@@ -105,7 +99,7 @@ function addIssue(list, index, field, message) {
   list.push(`${location}: ${message}`);
 }
 
-function validateResource(resource, index, errors, warnings) {
+function validateResource(resource, index, errors, warnings, categoryIds) {
   if (!isPlainObject(resource)) {
     addIssue(errors, index, "object", "must be a JSON object.");
     return;
@@ -132,19 +126,17 @@ function validateResource(resource, index, errors, warnings) {
     }
   }
 
-  if (typeof resource.category === "string" &&
-      !APPROVED_CATEGORIES.includes(resource.category)) {
-    addIssue(
-      errors,
-      index,
-      "category",
-      `must be one of: ${APPROVED_CATEGORIES.join(", ")}.`,
-    );
+  if (typeof resource.category === "string" && !categoryIds.has(resource.category)) {
+    addIssue(errors, index, "category", "must reference an existing category ID from categories.json.");
   }
 
-  if (typeof resource.pricing === "string" &&
-      !PRICING_VALUES.includes(resource.pricing)) {
+  if (typeof resource.pricing === "string" && !PRICING_VALUES.includes(resource.pricing)) {
     addIssue(errors, index, "pricing", `must be one of: ${PRICING_VALUES.join(", ")}.`);
+  }
+
+  if (typeof resource.accessType === "string" &&
+      !ACCESS_TYPE_VALUES.includes(resource.accessType)) {
+    addIssue(errors, index, "accessType", `must be one of: ${ACCESS_TYPE_VALUES.join(", ")}.`);
   }
 
   if (Array.isArray(resource.platforms)) {
@@ -171,6 +163,26 @@ function validateResource(resource, index, errors, warnings) {
     }
   }
 
+  if (resource.image !== undefined && resource.image !== null) {
+    if (!isPlainObject(resource.image)) {
+      addIssue(errors, index, "image", "must be null or an object with src and alt fields.");
+    } else {
+      if (typeof resource.image.src !== "string" || resource.image.src.trim() === "") {
+        addIssue(errors, index, "image.src", "must be a non-empty HTTPS URL.");
+      } else {
+        try {
+          const imageURL = new URL(resource.image.src);
+          if (imageURL.protocol !== "https:" || !imageURL.hostname) throw new Error("Invalid image URL");
+        } catch {
+          addIssue(errors, index, "image.src", "must be a valid absolute HTTPS URL.");
+        }
+      }
+      if (typeof resource.image.alt !== "string" || resource.image.alt.trim() === "") {
+        addIssue(errors, index, "image.alt", "must be a non-empty accessible description.");
+      }
+    }
+  }
+
   for (const field of ["dateAdded", "lastVerified"]) {
     const value = resource[field];
     if (value !== null && !isRealISODate(value)) {
@@ -183,11 +195,6 @@ function validateResource(resource, index, errors, warnings) {
     addIssue(errors, index, "icon", "must be a non-empty string when provided.");
   }
 
-  if (typeof resource.name === "string" && resource.name.trim() !== "" &&
-      typeof resource.id === "string" && resource.id.trim() === "") {
-    addIssue(errors, index, "id", "must be stable and non-empty.");
-  }
-
   if (typeof resource.dateAdded === "string" &&
       typeof resource.lastVerified === "string" &&
       isRealISODate(resource.dateAdded) &&
@@ -195,17 +202,23 @@ function validateResource(resource, index, errors, warnings) {
       resource.lastVerified < resource.dateAdded) {
     addIssue(warnings, index, "lastVerified", "is earlier than dateAdded.");
   }
-
 }
 
-/**
- * Validate a resource list without changing or repairing its contents.
- * Errors make the data invalid; warnings are advisory and do not block loading.
- */
-export function validateResources(value) {
+/** Validate a resource list against the category IDs loaded from categories.json. */
+export function validateResources(value, categories) {
   const errors = [];
   const warnings = [];
 
+  if (!Array.isArray(categories)) {
+    return {
+      valid: false,
+      errors: ["Category data must be loaded before resources can be validated."],
+      warnings,
+      resources: null,
+    };
+  }
+
+  const categoryIds = new Set(categories.map((category) => category?.id).filter(Boolean));
   if (!Array.isArray(value)) {
     return {
       valid: false,
@@ -217,14 +230,10 @@ export function validateResources(value) {
 
   const ids = new Set();
   value.forEach((resource, index) => {
-    validateResource(resource, index, errors, warnings);
+    validateResource(resource, index, errors, warnings, categoryIds);
 
-    if (isPlainObject(resource) &&
-        typeof resource.id === "string" &&
-        resource.id.trim() !== "") {
-      if (ids.has(resource.id)) {
-        addIssue(errors, index, "id", `duplicate identifier "${resource.id}".`);
-      }
+    if (isPlainObject(resource) && typeof resource.id === "string" && resource.id.trim() !== "") {
+      if (ids.has(resource.id)) addIssue(errors, index, "id", `duplicate identifier "${resource.id}".`);
       ids.add(resource.id);
     }
   });
@@ -237,7 +246,8 @@ export function validateResources(value) {
   };
 }
 
-function validateCategories(value) {
+/** Validate the category catalogue without relying on a duplicated hard-coded list. */
+export function validateCategories(value) {
   if (!Array.isArray(value)) {
     throw new DataValidationError(
       "categories.json must contain a JSON array.",
@@ -246,42 +256,60 @@ function validateCategories(value) {
   }
 
   const errors = [];
-  const names = value.map((category, index) => {
-    if (!isPlainObject(category) ||
-        typeof category.name !== "string" ||
-        category.name.trim() === "") {
-      errors.push(`Category ${index + 1}: must be an object with a non-empty name.`);
-      return null;
-    }
-    return category.name;
-  });
+  if (value.length === 0) errors.push("categories.json must contain at least one category.");
+  const ids = new Set();
+  const names = new Set();
+  const orders = new Set();
 
-  for (const name of APPROVED_CATEGORIES) {
-    if (!names.includes(name)) errors.push(`categories.json is missing "${name}".`);
-  }
-  for (const name of names) {
-    if (name !== null && !APPROVED_CATEGORIES.includes(name)) {
-      errors.push(`"${name}" is not an approved top-level category.`);
+  value.forEach((category, index) => {
+    const label = `Category ${index + 1}`;
+    if (!isPlainObject(category)) {
+      errors.push(`${label}: must be an object.`);
+      return;
     }
-  }
-  if (names.filter(Boolean).length !== new Set(names.filter(Boolean)).size) {
-    errors.push("categories.json contains duplicate category names.");
-  }
+
+    for (const field of ["id", "name", "description", "icon", "color"]) {
+      if (typeof category[field] !== "string" || category[field].trim() === "") {
+        errors.push(`${label} (${field}): must be a non-empty string.`);
+      }
+    }
+    if (typeof category.id === "string" && !CATEGORY_ID_PATTERN.test(category.id)) {
+      errors.push(`${label} (id): use lowercase words separated by hyphens.`);
+    }
+    if (typeof category.id === "string" && ids.has(category.id)) {
+      errors.push(`${label} (id): duplicate ID "${category.id}".`);
+    }
+    if (typeof category.id === "string") ids.add(category.id);
+    if (typeof category.name === "string" && names.has(category.name)) {
+      errors.push(`${label} (name): duplicate category name "${category.name}".`);
+    }
+    if (typeof category.name === "string") names.add(category.name);
+    if (!Number.isInteger(category.displayOrder) || category.displayOrder < 1) {
+      errors.push(`${label} (displayOrder): must be a positive whole number.`);
+    } else if (orders.has(category.displayOrder)) {
+      errors.push(`${label} (displayOrder): values must be unique.`);
+    } else {
+      orders.add(category.displayOrder);
+    }
+    if (typeof category.color === "string" && !/^#[0-9a-fA-F]{6}$/.test(category.color)) {
+      errors.push(`${label} (color): must be a six-digit hexadecimal colour.`);
+    }
+  });
 
   if (errors.length) {
     throw new DataValidationError(
-      "categories.json does not match the approved six-category structure.",
+      `categories.json has ${errors.length} validation error(s).`,
       { valid: false, errors, warnings: [] },
     );
   }
 
-  return value;
+  return [...value].sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
 let categoriesPromise;
 let resourcesPromise;
 
-/** Load and validate the six shared categories. The result is cached per page. */
+/** Load and validate the category catalogue. The result is cached per page. */
 export function loadCategories() {
   if (!categoriesPromise) {
     categoriesPromise = fetchJSON("data/categories.json")
@@ -294,12 +322,15 @@ export function loadCategories() {
   return categoriesPromise;
 }
 
-/** Load resources.json and reject invalid data rather than silently altering it. */
+/** Load resources and validate their category links against the shared catalogue. */
 export function loadResources() {
   if (!resourcesPromise) {
-    resourcesPromise = fetchJSON("data/resources.json")
-      .then((value) => {
-        const report = validateResources(value);
+    resourcesPromise = Promise.all([
+      fetchJSON("data/resources.json"),
+      loadCategories(),
+    ])
+      .then(([value, categories]) => {
+        const report = validateResources(value, categories);
         if (!report.valid) {
           throw new DataValidationError(
             `resources.json has ${report.errors.length} validation error(s).`,

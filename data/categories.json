@@ -1,32 +1,42 @@
 [
   {
+    "id": "ai",
     "name": "AI",
+    "description": "AI tools, assistants, models and creative AI platforms.",
     "icon": "sparkles",
-    "description": "AI tools, assistants, models and creative AI platforms."
+    "color": "#b8ff6a",
+    "displayOrder": 1
   },
   {
+    "id": "developer",
     "name": "Developer",
+    "description": "Coding tools, APIs, hosting, documentation and developer utilities.",
     "icon": "code",
-    "description": "Coding tools, APIs, hosting, documentation and developer utilities."
+    "color": "#7db8ff",
+    "displayOrder": 2
   },
   {
+    "id": "cybersecurity",
     "name": "Cybersecurity",
+    "description": "Ethical hacking labs, security learning, networking and Linux.",
     "icon": "shield-lock",
-    "description": "Ethical hacking labs, security learning, networking and Linux."
+    "color": "#ff7f9d",
+    "displayOrder": 3
   },
   {
+    "id": "study-learning",
     "name": "Study & Learning",
+    "description": "Courses, learning platforms and tools that make studying easier.",
     "icon": "school",
-    "description": "Courses, learning platforms and tools that make studying easier."
+    "color": "#ffc46b",
+    "displayOrder": 4
   },
   {
+    "id": "fun-entertainment",
     "name": "Fun & Entertainment",
+    "description": "Browser games, interactive experiments, sound discoveries and interesting corners of the web.",
     "icon": "device-gamepad-2",
-    "description": "Browser games, experiments and interesting corners of the web."
-  },
-  {
-    "name": "Relaxation",
-    "icon": "leaf",
-    "description": "Ambient sounds, calm websites and tools for taking breaks."
+    "color": "#bb91ff",
+    "displayOrder": 5
   }
 ]

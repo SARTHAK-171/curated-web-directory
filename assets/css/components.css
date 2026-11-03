@@ -736,9 +736,8 @@
   border-color: var(--border-strong);
 }
 
-.category-card:hover .icon-tile {
-  color: var(--lime);
-}
+.category-card .icon-tile { color: var(--category-accent, var(--lime)); }
+.category-card:hover .icon-tile { color: var(--lime); }
 
 .category-card-top {
   display: flex;
@@ -1179,3 +1178,68 @@
   font-size: 0.75rem;
   letter-spacing: 0.04em;
 }
+
+/* Shared, accessible resource save control used on Home, Explore and Saved. */
+.save-button {
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text-3);
+  cursor: pointer;
+  transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease,
+    background var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+.save-button:hover {
+  transform: translateY(-1px);
+  color: var(--lime);
+  border-color: var(--lime-border);
+  background: var(--lime-tint);
+}
+.save-button[aria-pressed="true"] { color: var(--lime); border-color: var(--lime-border); }
+.save-button:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.save-button .icon { width: 1.15rem; height: 1.15rem; }
+
+.save-feedback {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 1.25rem;
+  max-width: min(90vw, 28rem);
+  padding: .8rem 1rem;
+  border: 1px solid var(--lime-border);
+  border-radius: 12px;
+  background: #1b2115;
+  color: #eaffd5;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .35);
+  font-size: .82rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, .5rem);
+  transition: opacity var(--dur-base) ease, transform var(--dur-base) ease;
+}
+.save-feedback.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+.directory-card-icon { position: relative; overflow: hidden; }
+.directory-card-icon.has-image .directory-card-fallback { visibility: hidden; }
+.directory-card-fallback { display: grid; place-items: center; }
+.directory-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: .3rem;
+  background: var(--surface-2);
+}
+.monogram { position: relative; overflow: hidden; }
+.resource-card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: .25rem; background: var(--surface-3); }
+
+.resource-card-footer .resource-access-type { color: #c7b5ff; }

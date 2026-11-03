@@ -1,28 +1,27 @@
 # Curated Web Directory
 
-A curated directory of useful websites, digital tools, and
-online resources.
+A personal, curated directory of useful websites, tools, learning resources and interesting corners of the internet.
 
-## Goal
+## Project goals
 
-Help people discover useful digital resources without
-wasting time searching through random websites.
+- Organise resources into categories maintained in JSON.
+- Search, filter and sort the collection.
+- Show clear descriptions, pricing and access information.
+- Save resources locally in the current browser.
+- Stay responsive, accessible and easy for a beginner to maintain.
+- Host as a static website through GitHub Pages.
 
-## Planned Features
+## Technology
 
-- Organised categories and subcategories
-- Search and filters
-- Clear resource descriptions
-- Pricing information
-- Verified website links
-- Saved resources
-- Responsive design
+HTML, CSS, vanilla JavaScript modules and JSON. There is no backend, database, account system, framework or external API.
 
-## Project Status
+## Current status
 
-Planning and initial setup.
+Stages 1–6 are implemented. The collection contains 35 starter resources across five categories. Stage 6 adds persistent local saves, category IDs sourced from `data/categories.json`, access-type metadata and filtering, and an optional image/logo foundation.
 
-## Important
+## Important notes
 
-This project is a work in progress. Resource information
-and links will be reviewed before being included.
+- Saved resources are stored in the browser's localStorage on the current device/profile. They do not sync between devices.
+- Run the site through a local web server (such as VS Code Live Server); the pages fetch JSON files and are not designed to run from `file://`.
+- Follow `data/README.md` to add or maintain categories and resources.
+- Follow `tests/README.md` to run the automated checks.

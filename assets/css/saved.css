@@ -1,0 +1,41 @@
+/* saved.css — layout additions for the Saved page. Card styling is shared with Explore. */
+
+.saved-page { padding-bottom: var(--space-8); }
+.saved-directory { margin-top: var(--space-4); }
+.saved-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+.saved-search-field {
+  width: min(100%, 34rem);
+  min-height: 3.1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .65rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  color: var(--text-3);
+}
+.saved-search-field:focus-within { border-color: var(--lime-border); box-shadow: 0 0 0 3px var(--lime-tint); }
+.saved-search-field .icon { width: 1.1rem; height: 1.1rem; color: var(--lime); flex: none; }
+.saved-search-field input {
+  width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text-1);
+  background: transparent; font: inherit; font-size: .9rem;
+}
+.saved-search-field input::placeholder { color: var(--text-3); }
+.saved-toolbar .results-count { white-space: nowrap; }
+.saved-categories { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 var(--space-4); }
+.saved-categories .chip { border: 1px solid var(--border); }
+.saved-categories .chip.is-active,
+.saved-categories .chip[aria-pressed="true"] { color: var(--lime); border-color: var(--lime-border); background: var(--lime-tint); }
+.saved-empty { min-height: 16rem; }
+.saved-empty .btn { text-decoration: none; }
+@media (max-width: 650px) {
+  .saved-toolbar { align-items: stretch; flex-direction: column; }
+  .saved-search-field { width: 100%; }
+}

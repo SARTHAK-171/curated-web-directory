@@ -4,7 +4,7 @@
     "name": "ChatGPT",
     "description": "An AI assistant for writing, explanations, research, coding and everyday questions.",
     "fullDescription": "Chat with an AI assistant, work through questions, draft and revise text, analyze uploaded material, and use supported tools. A free plan is available with usage limits; paid plans add higher limits and more capabilities.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "AI assistants",
     "tags": [
       "AI assistant",
@@ -43,14 +43,16 @@
     "limitations": [
       "Free-plan access and tool limits apply and can change",
       "Responses can be inaccurate; verify important information"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "claude",
     "name": "Claude",
     "description": "An AI assistant for writing, analysis, coding and working with long documents.",
     "fullDescription": "Claude can help explain concepts, draft and edit writing, analyze documents, and assist with software development. Anthropic offers a free plan with limited usage and paid plans with higher capacity.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "AI assistants",
     "tags": [
       "AI assistant",
@@ -88,14 +90,16 @@
     "limitations": [
       "Free usage is limited and may vary",
       "AI output needs human review"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "gemini",
     "name": "Gemini",
     "description": "Google’s AI assistant for questions, writing, learning and supported Google services.",
     "fullDescription": "Gemini provides conversational AI help for research, writing, explanations and creative tasks. Google offers access without a paid AI plan, while paid Google AI plans increase usage and unlock additional capabilities.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "AI assistants",
     "tags": [
       "AI assistant",
@@ -131,14 +135,16 @@
     "limitations": [
       "Features and limits vary by country, account and plan",
       "Some advanced features require a paid Google AI plan"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "perplexity",
     "name": "Perplexity",
     "description": "An AI-powered search and answer engine that provides linked sources.",
     "fullDescription": "Ask questions and receive synthesized answers with citations to web sources. The free tier supports basic search and answers; paid plans provide higher limits and additional research features.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "AI search and research",
     "tags": [
       "AI search",
@@ -176,14 +182,16 @@
     "limitations": [
       "Citations should still be opened and checked",
       "Advanced models and higher usage require paid plans"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "notebooklm",
     "name": "NotebookLM",
     "description": "A research assistant that answers questions using the sources you provide.",
     "fullDescription": "Upload or add supported sources such as documents, websites and videos, then ask questions grounded in that collection. NotebookLM can help summarize material and create study-oriented outputs. Standard access is available free, with higher limits on eligible paid plans.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "Research and note tools",
     "tags": [
       "Research",
@@ -217,14 +225,16 @@
     "limitations": [
       "Source and usage limits apply",
       "Generated summaries can omit context or make mistakes"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "hugging-face",
     "name": "Hugging Face",
     "description": "A hub for discovering and sharing machine-learning models, datasets and demos.",
     "fullDescription": "Explore open machine-learning models, datasets, research and interactive Spaces, or publish your own work. The Hub has free public access; private storage, compute and higher resource needs can involve paid plans.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "Models and datasets",
     "tags": [
       "Open models",
@@ -258,14 +268,16 @@
     "limitations": [
       "Some hosted demos require paid compute or may be unavailable",
       "Model licences and usage terms differ by project"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "ollama",
     "name": "Ollama",
     "description": "Run supported open AI models locally on your own computer.",
     "fullDescription": "Download Ollama to run compatible language models locally, manage models from a command line, and connect local models to supported applications. Local model use does not require a subscription, while optional cloud model services have separate usage and pricing.",
-    "category": "AI",
+    "category": "ai",
     "subcategory": "Local AI tools",
     "tags": [
       "Local AI",
@@ -302,14 +314,16 @@
       "Model downloads can use substantial disk space and RAM",
       "Speed depends heavily on the computer and model size",
       "Optional cloud services are separate"
-    ]
+    ],
+    "accessType": "download",
+    "image": null
   },
   {
     "id": "github",
     "name": "GitHub",
     "description": "Host code repositories, track changes and collaborate on software projects.",
     "fullDescription": "GitHub provides Git-based source control, issue tracking, pull requests and project collaboration. Its Free plan includes unlimited public and private repositories, with additional collaboration and enterprise features on paid plans.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Code hosting and collaboration",
     "tags": [
       "Git",
@@ -348,14 +362,16 @@
     "limitations": [
       "Some advanced security and organization features require paid plans",
       "Public repositories are visible to everyone"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "visual-studio-code",
     "name": "Visual Studio Code",
     "description": "A free code editor with extensions, debugging and Git integration.",
     "fullDescription": "Visual Studio Code is a lightweight source-code editor that supports many programming languages through extensions. It includes editing, debugging, terminal and source-control features and is available for Windows, macOS and Linux.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Code editors",
     "tags": [
       "Code editor",
@@ -393,14 +409,16 @@
     "limitations": [
       "Some advanced workflows require extensions or external tools",
       "The editor is not a full IDE for every language"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "mdn-web-docs",
     "name": "MDN Web Docs",
     "description": "Reliable documentation and guides for HTML, CSS, JavaScript and web APIs.",
     "fullDescription": "MDN is a reference and learning resource for web technologies. Use it to understand browser APIs, language features, HTML elements, CSS properties and practical web-development concepts. Its documentation is freely accessible.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Documentation and learning",
     "tags": [
       "Documentation",
@@ -435,14 +453,16 @@
     "limitations": [
       "It is documentation rather than a hosted coding environment",
       "Some topics require prior programming knowledge"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "codepen",
     "name": "CodePen",
     "description": "Write HTML, CSS and JavaScript in the browser and see a live preview.",
     "fullDescription": "CodePen is an online code playground for building and sharing small front-end experiments. The free plan includes public Pens and a limited number of files per Pen; privacy and advanced features are part of paid plans.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Online code playgrounds",
     "tags": [
       "HTML",
@@ -477,14 +497,16 @@
     "limitations": [
       "Free Pens are public",
       "The free plan limits files per Pen and has other restrictions"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "stackblitz",
     "name": "StackBlitz",
     "description": "Create and run web-development projects directly in your browser.",
     "fullDescription": "StackBlitz provides browser-based development environments for web projects, with live previews and project templates. It offers free access with usage and project limits; paid plans provide higher limits and additional features.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Online code playgrounds",
     "tags": [
       "Web IDE",
@@ -519,14 +541,16 @@
     "limitations": [
       "Free usage and project limits apply",
       "Large projects may need more resources than a browser can provide"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "vercel",
     "name": "Vercel",
     "description": "Deploy websites and front-end projects with previews and hosting tools.",
     "fullDescription": "Vercel is a deployment platform commonly used for front-end frameworks and web applications. Its Hobby plan is free for personal projects and includes Git-based deployments, previews and a set of usage allowances; other use cases may require paid plans.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Hosting and deployment",
     "tags": [
       "Hosting",
@@ -561,14 +585,16 @@
     "limitations": [
       "Hobby plan is intended for personal, non-commercial use",
       "Usage limits and plan terms apply"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "netlify",
     "name": "Netlify",
     "description": "Build and deploy websites with Git-based workflows and preview links.",
     "fullDescription": "Netlify hosts websites and web applications and can connect to Git repositories for automatic builds and deployments. A free plan is available with monthly usage credits and limits; paid plans add capacity and collaboration features.",
-    "category": "Developer",
+    "category": "developer",
     "subcategory": "Hosting and deployment",
     "tags": [
       "Hosting",
@@ -603,14 +629,16 @@
     "limitations": [
       "The free plan has monthly credit and usage limits",
       "Some team and advanced features require paid plans"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "portswigger-academy",
     "name": "PortSwigger Web Security Academy",
     "description": "Free interactive lessons and labs for learning web application security.",
     "fullDescription": "PortSwigger's Web Security Academy teaches web vulnerabilities through explanations and hands-on labs. It is designed for legal, controlled practice and covers topics such as SQL injection, cross-site scripting and access control.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "Web security labs",
     "tags": [
       "Web security",
@@ -644,14 +672,16 @@
     "limitations": [
       "Some exercises require familiarity with HTTP and web applications",
       "Use labs only within their intended environment"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "tryhackme",
     "name": "TryHackMe",
     "description": "Guided cybersecurity rooms and browser-based practice for different skill levels.",
     "fullDescription": "TryHackMe provides guided cybersecurity learning rooms and practical exercises. It has a free tier with hundreds of rooms and limited AttackBox time; paid plans unlock additional paths, labs and usage.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "Guided learning labs",
     "tags": [
       "Cybersecurity",
@@ -686,14 +716,16 @@
     "limitations": [
       "Many learning paths and advanced features require a paid plan",
       "Practice only in authorised rooms and environments"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "overthewire",
     "name": "OverTheWire",
     "description": "Learn Linux and security concepts through progressive terminal-based wargames.",
     "fullDescription": "OverTheWire hosts community wargames that teach security concepts through practical challenges. Bandit is designed for beginners and introduces command-line and Linux fundamentals. The games are freely accessible.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "Linux and terminal practice",
     "tags": [
       "Linux",
@@ -728,14 +760,16 @@
     "limitations": [
       "Requires a terminal and basic command-line use",
       "Hints are not always provided; challenges require independent problem-solving"
-    ]
+    ],
+    "accessType": "download",
+    "image": null
   },
   {
     "id": "picoctf",
     "name": "picoCTF",
     "description": "A cybersecurity learning platform with beginner-friendly capture-the-flag challenges.",
     "fullDescription": "picoCTF is an educational CTF platform created by Carnegie Mellon University's CyLab. Learners solve challenges involving areas such as cryptography, web exploitation, forensics and general security in a safe practice environment.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "CTF challenges",
     "tags": [
       "CTF",
@@ -770,14 +804,16 @@
     "limitations": [
       "Some challenges require programming or command-line skills",
       "Only use the platform's authorised challenge environment"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "owasp-juice-shop",
     "name": "OWASP Juice Shop",
     "description": "An intentionally vulnerable web app for practising web security in a legal lab.",
     "fullDescription": "OWASP Juice Shop is an open-source training application containing deliberately introduced security flaws. It is useful for security education, demonstrations and testing defensive tools when run in a controlled environment.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "Vulnerable practice apps",
     "tags": [
       "OWASP",
@@ -815,14 +851,16 @@
     "limitations": [
       "Intentionally vulnerable; do not expose an unsafe instance to the public internet",
       "Requires setup if run locally"
-    ]
+    ],
+    "accessType": "download",
+    "image": null
   },
   {
     "id": "cyberchef",
     "name": "CyberChef",
     "description": "A browser-based toolkit for encoding, decoding, encryption and data analysis tasks.",
     "fullDescription": "CyberChef is an open-source web application developed by GCHQ. It provides a visual recipe-based interface for common data transformations, encoding and decoding, compression, hashing and analysis. Processing is performed in the browser.",
-    "category": "Cybersecurity",
+    "category": "cybersecurity",
     "subcategory": "Security and data utilities",
     "tags": [
       "Data analysis",
@@ -856,14 +894,16 @@
     "limitations": [
       "It is a utility, not a substitute for understanding cryptography",
       "Use trusted input data and verify important results"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "khan-academy",
     "name": "Khan Academy",
     "description": "Free lessons and practice for maths, science, computing and more.",
     "fullDescription": "Khan Academy offers structured lessons, practice exercises and instructional videos across school and introductory college subjects. Learners can use it at no cost, while some optional partner or programme features may vary.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "Academic learning",
     "tags": [
       "Maths",
@@ -899,14 +939,16 @@
     "limitations": [
       "Course coverage and curriculum alignment vary by subject and region",
       "It does not replace a teacher or formal qualification"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "freecodecamp",
     "name": "freeCodeCamp",
     "description": "Learn programming with free lessons, coding exercises and projects.",
     "fullDescription": "freeCodeCamp teaches web development and programming through an interactive curriculum, practice projects and articles. Its learning platform code is open source, while curriculum content has separate copyright terms. The core learning experience is free.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "Programming education",
     "tags": [
       "Coding",
@@ -941,14 +983,16 @@
     "limitations": [
       "Self-paced learning requires consistency",
       "Certificates are not the same as an accredited college qualification"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "mit-opencourseware",
     "name": "MIT OpenCourseWare",
     "description": "Free course materials from MIT, including notes, assignments and lecture videos.",
     "fullDescription": "MIT OpenCourseWare publishes materials from thousands of MIT courses for independent study. Content can include syllabi, lecture notes, readings, assignments and videos. It is free to access and does not provide course credit or certificates.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "University course materials",
     "tags": [
       "University",
@@ -982,14 +1026,16 @@
     "limitations": [
       "No grades, instructor interaction, academic credit or certificates",
       "Some courses have incomplete or older materials"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "cs50x",
     "name": "CS50x",
     "description": "Harvard’s introductory computer science course, available online for self-study.",
     "fullDescription": "CS50x introduces computer science and programming through lectures, problem sets and a final project. Anyone can follow the course online for free. The course describes separate free CS50 certificates and paid verified certificate options through edX.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "Computer science courses",
     "tags": [
       "Computer science",
@@ -1024,14 +1070,16 @@
     "limitations": [
       "The course is challenging for beginners and requires sustained effort",
       "Verified edX certificates and academic credit are separate and may cost money"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "w3schools",
     "name": "W3Schools",
     "description": "Quick tutorials and examples for web development and programming languages.",
     "fullDescription": "W3Schools provides tutorials, references and editable examples for HTML, CSS, JavaScript, Python, SQL and other technologies. Core tutorials are available free without signing up; premium features and certificates are paid.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "Programming tutorials",
     "tags": [
       "Tutorials",
@@ -1065,14 +1113,16 @@
     "limitations": [
       "Some practice, progress and certificate features require a paid plan",
       "For deeper topics, compare explanations with official documentation"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "desmos",
     "name": "Desmos Graphing Calculator",
     "description": "Plot equations, explore functions and visualise maths in an interactive graph.",
     "fullDescription": "The Desmos Graphing Calculator lets you graph equations, plot points, explore functions and create mathematical visualisations in a browser. The calculator is free to use, with additional classroom products and services available separately.",
-    "category": "Study & Learning",
+    "category": "study-learning",
     "subcategory": "Maths tools",
     "tags": [
       "Maths",
@@ -1108,14 +1158,16 @@
     "limitations": [
       "Advanced classroom features are separate from the basic calculator",
       "It is a learning aid, not a replacement for showing working"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "radio-garden",
     "name": "Radio Garden",
     "description": "Explore a globe and listen to live radio stations around the world.",
     "fullDescription": "Radio Garden lets listeners browse a globe of radio stations and tune in to live broadcasts from different places. Availability and playback depend on each station and regional rights.",
-    "category": "Fun & Entertainment",
+    "category": "fun-entertainment",
     "subcategory": "Music and radio",
     "tags": [
       "Radio",
@@ -1151,14 +1203,16 @@
     "limitations": [
       "Individual stations may be offline or geographically restricted",
       "Station content and advertising are controlled by broadcasters"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "internet-archive",
     "name": "Internet Archive",
     "description": "Explore a digital library of books, films, audio, websites and archived material.",
     "fullDescription": "The Internet Archive is a non-profit digital library that preserves and provides access to a broad collection of digital materials, including archived web pages, books, audio and video. Access and borrowing conditions vary by item.",
-    "category": "Fun & Entertainment",
+    "category": "fun-entertainment",
     "subcategory": "Digital collections",
     "tags": [
       "Digital library",
@@ -1192,14 +1246,16 @@
     "limitations": [
       "Not every item is available for immediate download or streaming",
       "Borrowing and access restrictions vary by item and rights"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "project-gutenberg",
     "name": "Project Gutenberg",
     "description": "Read thousands of free ebooks, especially older public-domain literature.",
     "fullDescription": "Project Gutenberg is a volunteer-run digital library offering more than 75,000 free ebooks. Many works are public domain in the United States; users outside the US should check local copyright rules before downloading or redistributing a title.",
-    "category": "Fun & Entertainment",
+    "category": "fun-entertainment",
     "subcategory": "Books and reading",
     "tags": [
       "Ebooks",
@@ -1233,14 +1289,16 @@
     "limitations": [
       "Copyright status can differ by country",
       "The catalogue focuses heavily on older works"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "neal-fun",
     "name": "Neal.fun",
     "description": "A collection of playful interactive experiments and small web experiences.",
     "fullDescription": "Neal.fun hosts creative browser-based projects, visual experiments and interactive experiences made by independent creator Neal Agarwal. It is a lightweight place to explore unusual ideas and short interactive activities.",
-    "category": "Fun & Entertainment",
+    "category": "fun-entertainment",
     "subcategory": "Interactive experiments",
     "tags": [
       "Interactive",
@@ -1274,14 +1332,16 @@
     "limitations": [
       "Individual experiments vary in quality and may change over time",
       "Some experiences may not be suitable for every device or browser"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "itch-io",
     "name": "itch.io",
     "description": "Discover independent games and creative projects, including many free titles.",
     "fullDescription": "itch.io is an open marketplace focused on independent games and digital creations. Creators choose how to distribute their work, so the catalogue includes free, paid and pay-what-you-want projects.",
-    "category": "Fun & Entertainment",
+    "category": "fun-entertainment",
     "subcategory": "Indie games",
     "tags": [
       "Indie games",
@@ -1318,15 +1378,17 @@
     "limitations": [
       "Quality, compatibility and safety vary by individual upload",
       "Check each creator's page and download details before installing"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "pomofocus",
     "name": "Pomofocus",
     "description": "A simple Pomodoro timer for focused work sessions and breaks.",
     "fullDescription": "Pomofocus is a browser-based Pomodoro timer that helps structure work into focused intervals separated by breaks. It is useful for study sessions and personal time management; optional paid features may be available.",
-    "category": "Relaxation",
-    "subcategory": "Focus and break timers",
+    "category": "study-learning",
+    "subcategory": "Focus and study timers",
     "tags": [
       "Pomodoro",
       "Focus",
@@ -1362,15 +1424,17 @@
     "limitations": [
       "A timer does not guarantee better focus or replace healthy breaks",
       "Some additional features may require payment"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "a-soft-murmur",
     "name": "A Soft Murmur",
     "description": "Mix gentle ambient sounds such as rain, wind and waves.",
     "fullDescription": "A Soft Murmur provides ambient background sounds that can be mixed to create a personal listening atmosphere for reading, relaxing or focusing.",
-    "category": "Relaxation",
-    "subcategory": "Ambient sound",
+    "category": "fun-entertainment",
+    "subcategory": "Interactive sound and music",
     "tags": [
       "Ambient sound",
       "Rain",
@@ -1403,15 +1467,17 @@
     "limitations": [
       "It is not a medical or sleep treatment",
       "Requires a browser with audio playback support"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   },
   {
     "id": "mynoise",
     "name": "myNoise",
     "description": "Customise ambient sound generators for focus, rest and masking background noise.",
     "fullDescription": "myNoise offers interactive sound generators with adjustable sliders, allowing listeners to shape ambient audio such as rain, nature, drones and noise textures. Many generators are available free on the website; donations and optional apps support the project.",
-    "category": "Relaxation",
-    "subcategory": "Ambient sound",
+    "category": "fun-entertainment",
+    "subcategory": "Interactive sound and music",
     "tags": [
       "Soundscapes",
       "Focus",
@@ -1446,15 +1512,17 @@
     "limitations": [
       "Some content or app features may be paid or donation-supported",
       "Audio preferences are personal; no guaranteed health benefit"
-    ]
+    ],
+    "accessType": "both",
+    "image": null
   },
   {
     "id": "lofi-girl",
     "name": "Lofi Girl",
     "description": "Continuous music livestreams for studying, relaxing and chilling.",
     "fullDescription": "Lofi Girl publishes continuous music livestreams, including lo-fi hip-hop, synthwave and jazz-oriented channels. It is an easy way to play background music while studying or taking a break.",
-    "category": "Relaxation",
-    "subcategory": "Music for focus",
+    "category": "fun-entertainment",
+    "subcategory": "Music and livestreams",
     "tags": [
       "Music",
       "Lo-fi",
@@ -1487,6 +1555,8 @@
     "limitations": [
       "Requires an internet connection",
       "Music streams may include platform advertising and are not an offline player"
-    ]
+    ],
+    "accessType": "browser",
+    "image": null
   }
 ]
