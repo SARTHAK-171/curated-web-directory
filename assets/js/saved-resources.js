@@ -95,6 +95,7 @@ export function createSaveButton(resource) {
   button.type = "button";
   button.className = "save-button";
   button.dataset.saveResource = resource.id;
+  button.dataset.resourceName = resource.name;
   button.setAttribute("aria-pressed", String(isSaved));
   button.setAttribute("aria-label", `${isSaved ? "Remove" : "Save"} ${resource.name} ${isSaved ? "from" : "to"} saved resources`);
   button.title = isSaved ? "Remove from saved" : "Save resource";
@@ -120,11 +121,16 @@ function updateSaveButtons() {
   for (const button of document.querySelectorAll("[data-save-resource]")) {
     const isSaved = activeSavedIds.has(button.dataset.saveResource);
     const card = button.closest(".directory-card, .resource-card");
-    const name = card?.querySelector("h3")?.textContent || "resource";
+    const name = button.dataset.resourceName || card?.querySelector("h3")?.textContent || "resource";
     button.setAttribute("aria-pressed", String(isSaved));
     button.setAttribute("aria-label", `${isSaved ? "Remove" : "Save"} ${name} ${isSaved ? "from" : "to"} saved resources`);
     button.title = isSaved ? "Remove from saved" : "Save resource";
-    button.innerHTML = iconHTML(isSaved ? "heart-filled" : "heart");
+    if (button.dataset.saveLabel === "true") {
+      button.textContent = isSaved ? "Remove from saved" : "Save resource";
+      button.classList.toggle("is-saved", isSaved);
+    } else {
+      button.innerHTML = iconHTML(isSaved ? "heart-filled" : "heart");
+    }
   }
 }
 

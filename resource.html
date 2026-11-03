@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resource details · YOUR_SITE_NAME</title>
+  <meta name="description" content="Explore a resource in the curated ORBIT directory.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#09090d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/explore.css">
+  <link rel="stylesheet" href="assets/css/detail.css">
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/resource-detail.js"></script>
+</head>
+<body data-page="resource">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header id="site-header" class="site-header"></header>
+  <main id="main" class="detail-page container">
+    <div id="detail-loading" class="detail-state" role="status">Loading resource details…</div>
+    <section id="detail-error" class="detail-state detail-error" hidden aria-labelledby="detail-error-title">
+      <span class="detail-state-mark" aria-hidden="true">!</span>
+      <p class="eyebrow">RESOURCE UNAVAILABLE</p>
+      <h1 id="detail-error-title">We couldn’t find that resource</h1>
+      <p id="detail-error-message">The link may be incomplete or the resource may have been removed.</p>
+      <a class="btn btn-primary" href="explore.html">Back to Explore</a>
+    </section>
+    <div id="resource-detail-content" hidden>
+      <nav class="detail-breadcrumb" aria-label="Breadcrumb">
+        <a href="explore.html">Explore</a><span aria-hidden="true">/</span><span id="detail-category"></span>
+      </nav>
+      <section class="detail-hero" aria-labelledby="detail-title">
+        <div class="detail-hero-main">
+          <div class="detail-logo" id="detail-logo"></div>
+          <div class="detail-heading-copy">
+            <p class="eyebrow" id="detail-subcategory"></p>
+            <h1 id="detail-title"></h1>
+            <p class="detail-short-description" id="detail-description"></p>
+            <div class="detail-tags" id="detail-tags"></div>
+          </div>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" id="detail-visit" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Visit official website <span aria-hidden="true">↗</span></a>
+          <button class="btn btn-secondary" id="detail-save" type="button" aria-pressed="false">Save resource</button>
+          <button class="btn btn-ghost" id="detail-copy" type="button">Copy link</button>
+        </div>
+        <p class="detail-feedback" id="detail-feedback" role="status" aria-live="polite" hidden></p>
+      </section>
+      <div class="detail-layout">
+        <div class="detail-main-column">
+          <section class="detail-panel" id="detail-about-section">
+            <p class="eyebrow">OVERVIEW</p><h2>About this resource</h2><p id="detail-full-description" class="detail-long-copy"></p>
+          </section>
+          <section class="detail-panel" id="detail-features-section" hidden>
+            <p class="eyebrow">WHAT IT OFFERS</p><h2>Key features</h2><ul class="detail-list" id="detail-features"></ul>
+          </section>
+          <section class="detail-panel detail-limitations" id="detail-limitations-section" hidden>
+            <p class="eyebrow">GOOD TO KNOW</p><h2>Limitations</h2><ul class="detail-list" id="detail-limitations"></ul>
+          </section>
+        </div>
+        <aside class="detail-sidebar" aria-label="Resource information">
+          <section class="detail-panel detail-facts"><p class="eyebrow">AT A GLANCE</p><h2>Resource info</h2><dl id="detail-facts-list"></dl></section>
+          <section class="detail-panel" id="detail-platforms-section" hidden><p class="eyebrow">COMPATIBILITY</p><h2>Platforms</h2><div id="detail-platforms" class="detail-pills"></div></section>
+          <section class="detail-panel" id="detail-keywords-section" hidden><p class="eyebrow">DISCOVERABILITY</p><h2>Search terms</h2><div id="detail-keywords" class="detail-pills"></div></section>
+        </aside>
+      </div>
+      <section class="detail-related-section" id="detail-related-section" hidden aria-labelledby="related-heading">
+        <div class="detail-section-heading"><div><p class="eyebrow">KEEP EXPLORING</p><h2 id="related-heading">Related resources</h2></div><a class="text-link" href="explore.html">Explore all <span aria-hidden="true">↗</span></a></div>
+        <div class="resource-grid detail-related-grid" id="detail-related-grid"></div>
+      </section>
+      <div class="detail-bottom-link"><a href="explore.html">← Back to Explore</a></div>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

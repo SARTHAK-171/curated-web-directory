@@ -888,6 +888,7 @@
 
 .resource-card-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
   margin-top: auto;
@@ -1243,3 +1244,10 @@
 .resource-card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: .25rem; background: var(--surface-3); }
 
 .resource-card-footer .resource-access-type { color: #c7b5ff; }
+
+/* Stage 7 shared resource-card actions (Explore, Saved and related cards). */
+.directory-card-actions { display: grid; gap: .45rem; margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--border-subtle); }
+.directory-card-actions .directory-card-link { margin-top: 0; padding-top: .25rem; border-top: 0; }
+.directory-card-details { color: var(--lime); font-size: .8rem; font-weight: 650; text-decoration: none; }
+.directory-card-details:hover { color: var(--lime-hover); }
+.directory-card-link[hidden] { display: none; }

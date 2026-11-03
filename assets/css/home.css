@@ -396,3 +396,9 @@
   color: var(--text-3);
   font-size: 0.875rem;
 }
+
+.resource-details-link { color: var(--lime); font-size: .78rem; font-weight: 600; text-decoration: none; }
+.resource-details-link:hover { color: var(--lime-hover); }
+
+.recent-details-link { margin-left: .55rem; color: var(--lime); font-size: .75rem; text-decoration: none; }
+.recent-details-link:hover { color: var(--lime-hover); }

@@ -64,9 +64,18 @@ export function createResourceCard(resource, categoryNames = {}) {
   if (resource.freeTrial) meta.append(createTag("Free trial"));
   if (resource.platforms.length) meta.append(createTag(resource.platforms.slice(0, 2).join(" · ")));
 
+  const actions = document.createElement("div");
+  actions.className = "directory-card-actions";
+
+  const details = document.createElement("a");
+  details.className = "directory-card-details";
+  details.href = `resource.html?id=${encodeURIComponent(resource.id)}`;
+  details.textContent = "View details";
+
   const link = document.createElement("a");
   link.className = "directory-card-link";
-  link.href = resource.url;
+  const officialURL = safeOfficialURL(resource.url);
+  if (officialURL) link.href = officialURL;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   link.referrerPolicy = "no-referrer";
@@ -75,9 +84,20 @@ export function createResourceCard(resource, categoryNames = {}) {
   const arrow = document.createElement("span");
   arrow.innerHTML = iconHTML("arrow-up-right");
   link.append(linkText, arrow);
+  if (!officialURL) link.hidden = true;
+  actions.append(details, link);
 
-  article.append(top, heading, description, meta, link);
+  article.append(top, heading, description, meta, actions);
   return article;
+}
+
+function safeOfficialURL(value) {
+  try {
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) && url.hostname ? url.href : "";
+  } catch {
+    return "";
+  }
 }
 
 function createTag(label, className = "") {

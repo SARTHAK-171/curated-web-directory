@@ -108,7 +108,11 @@ function buildFeaturedCard(resource) {
   const arrow = document.createElement("span");
   arrow.innerHTML = iconHTML("arrow-up-right");
   visit.append(arrow);
-  footer.append(category, accessType, visit);
+  const details = document.createElement("a");
+  details.className = "resource-details-link";
+  details.href = `resource.html?id=${encodeURIComponent(resource.id)}`;
+  details.textContent = "View details";
+  footer.append(category, accessType, details, visit);
 
   article.append(top, body, footer);
   item.append(article);
@@ -140,9 +144,13 @@ function buildRecentRow(resource) {
   name.rel = "noopener noreferrer";
   name.referrerPolicy = "no-referrer";
   name.textContent = resource.name;
+  const detailsLink = document.createElement("a");
+  detailsLink.className = "recent-details-link";
+  detailsLink.href = `resource.html?id=${encodeURIComponent(resource.id)}`;
+  detailsLink.textContent = "View details";
   const description = document.createElement("span");
   description.textContent = resource.description;
-  details.append(name, description);
+  details.append(name, detailsLink, description);
 
   const date = document.createElement("span");
   date.className = "recent-date";
