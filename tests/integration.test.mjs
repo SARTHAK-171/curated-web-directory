@@ -31,6 +31,25 @@ assert.match(savedHTML, /id="saved-results"/);
 
 const exploreHTML = await readFile(resolve(root, "explore.html"), "utf8");
 assert.match(exploreHTML, /id="filter-access-type"/);
+assert.match(exploreHTML, /<details class="filter-disclosure" id="filter-disclosure" open>/);
+assert.match(exploreHTML, /<summary>[\s\S]*?Filters[\s\S]*?<\/summary>/);
+const exploreScript = await readFile(resolve(root, "assets/js/explore.js"), "utf8");
+assert.match(exploreScript, /matchMedia\("\(max-width: 600px\)"\)/);
+assert.match(exploreScript, /disclosure\.open = !event\.matches/);
+
+const aboutHTML = await readFile(resolve(root, "about.html"), "utf8");
+assert.doesNotMatch(aboutHTML, /Placeholder page|YOUR_SITE_NAME/);
+for (const sectionId of ["about-heading", "approach-heading", "about-categories-heading", "about-cta-heading"]) {
+  assert.match(aboutHTML, new RegExp(`id="${sectionId}"`));
+}
+for (const categoryPath of ["ai", "developer", "cybersecurity", "study-learning", "fun-entertainment"]) {
+  assert.ok(aboutHTML.includes(`explore.html?category=${categoryPath}`), `About page should link to the ${categoryPath} category.`);
+}
+assert.match(aboutHTML, /Study &amp; Learning/);
+assert.match(aboutHTML, /Fun &amp; Entertainment/);
+
+const configBrand = await readFile(resolve(root, "assets/js/config.js"), "utf8");
+assert.match(configBrand, /SITE_NAME = "ORBIT"/);
 
 const config = await readFile(resolve(root, "assets/js/config.js"), "utf8");
 assert.match(config, /orbit\.savedResourceIds\.v1/);
@@ -39,7 +58,7 @@ assert.match(layout, /syncSavedCountWithResources/);
 assert.match(layout, /savedStore\.count\(validIds\)/, "Navigation counts must ignore deleted resource IDs on all pages.");
 
 // Local font and image references inside stylesheets must resolve as well.
-for (const stylesheet of ["assets/css/style.css", "assets/css/components.css", "assets/css/home.css", "assets/css/explore.css", "assets/css/saved.css", "assets/css/detail.css"]) {
+for (const stylesheet of ["assets/css/style.css", "assets/css/components.css", "assets/css/home.css", "assets/css/explore.css", "assets/css/saved.css", "assets/css/detail.css", "assets/css/about.css"]) {
   const css = await readFile(resolve(root, stylesheet), "utf8");
   for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
     const reference = match[1].trim();
@@ -66,12 +85,25 @@ const categoryIds = new Set(categories.map((category) => category.id));
 const resources = JSON.parse(await readFile(resolve(root, "data/resources.json"), "utf8"));
 assert.ok(resources.every((resource) => categoryIds.has(resource.category)), "All resources must reference a live category ID.");
 
+for (const file of htmlFiles) {
+  const html = await readFile(resolve(root, file), "utf8");
+  assert.doesNotMatch(html, /YOUR_SITE_NAME/, `${file} should not retain the template brand placeholder`);
+}
+
 const detailHTML = await readFile(resolve(root, "resource.html"), "utf8");
 assert.match(detailHTML, /id="detail-title"/);
 assert.match(detailHTML, /assets\/js\/resource-detail\.js/);
 const cardSource = await readFile(resolve(root, "assets/js/resource-card.js"), "utf8");
 assert.match(cardSource, /resource\.html\?id=/);
 assert.match(cardSource, /noopener noreferrer/);
+const homeHTML = await readFile(resolve(root, "index.html"), "utf8");
+assert.match(homeHTML, /id="featured-grid"/);
+assert.match(homeHTML, /id="recent-list"/);
 const homeSource = await readFile(resolve(root, "assets/js/home.js"), "utf8");
 assert.match(homeSource, /resource\.html\?id=/, "Homepage resource entries must link to their detail page.");
+assert.match(homeSource, /resource\.featured/, "Featured items must come from the existing resource flag.");
+assert.match(homeSource, /resource\.dateAdded/, "Recently Added items must use existing date metadata.");
+
+const savedStoreSource = await readFile(resolve(root, "assets/js/saved-resources.js"), "utf8");
+assert.match(savedStoreSource, /window\.addEventListener\("storage"/);
 console.log("PASS: HTML local paths, detail page wiring, Saved page wiring, access filter and project integration references.");

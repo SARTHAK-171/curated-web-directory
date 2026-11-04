@@ -79,10 +79,6 @@ export function buildHeader() {
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="nav-list"></ul>
-        <button class="btn btn-secondary btn-sm" type="button" id="surprise-button"
-                disabled title="Coming soon">
-          ${iconHTML("arrows-shuffle")}Surprise Me
-        </button>
       </nav>
     </div>
   `;

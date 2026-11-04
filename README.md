@@ -1,4 +1,4 @@
-# Curated Web Directory
+# ORBIT — Curated Web Directory
 
 A personal, curated directory of useful websites, tools, learning resources and interesting corners of the internet.
 
@@ -17,7 +17,7 @@ HTML, CSS, vanilla JavaScript modules and JSON. There is no backend, database, a
 
 ## Current status
 
-Stages 1–7 are implemented. The collection contains 35 starter resources across five categories. Stage 6 added persistent local saves, category IDs sourced from `data/categories.json`, access-type metadata and filtering, and an optional image/logo foundation. Stage 7 adds shareable resource detail pages, related-resource discovery and detail-page save/share actions.
+Stages 1–7 and Stage 9 are implemented; Stage 8 was intentionally skipped. The collection contains 35 starter resources across five categories. Stage 6 added persistent local saves, category IDs sourced from `data/categories.json`, access-type metadata and filtering, and an optional image/logo foundation. Stage 7 adds shareable resource detail pages, related-resource discovery and detail-page save/share actions. Stage 9 completes the About page, adds a mobile filter disclosure to Explore, and finalises shared ORBIT branding while preserving the existing Featured, Recently Added and saved-resource integrations.
 
 ## Important notes
 

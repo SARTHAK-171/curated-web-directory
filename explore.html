@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YOUR_SITE_NAME</title>
+  <title>Explore · ORBIT</title>
   <meta name="description" content="Browse and filter the curated directory of useful websites and digital resources.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#09090d">
@@ -57,49 +57,55 @@
           </button>
         </div>
 
-        <div class="filter-panel" aria-label="Resource filters">
-          <div class="filter-field">
-            <label for="filter-category">Category</label>
-            <select id="filter-category">
-              <option value="">All categories</option>
-            </select>
+        <details class="filter-disclosure" id="filter-disclosure" open>
+          <summary>
+            <span class="filter-disclosure-title">Filters</span>
+            <span class="filter-disclosure-hint">Category, pricing, access and platform</span>
+          </summary>
+          <div class="filter-panel" aria-label="Resource filters">
+            <div class="filter-field">
+              <label for="filter-category">Category</label>
+              <select id="filter-category">
+                <option value="">All categories</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-subcategory">Subcategory</label>
+              <select id="filter-subcategory" disabled>
+                <option value="">All subcategories</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-pricing">Pricing</label>
+              <select id="filter-pricing">
+                <option value="">Any pricing</option>
+                <option value="free">Free</option>
+                <option value="freemium">Freemium</option>
+                <option value="paid">Paid</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-access-type">Access type</label>
+              <select id="filter-access-type">
+                <option value="">Any access type</option>
+                <option value="browser">Works in browser</option>
+                <option value="download">Download required</option>
+                <option value="both">Browser + download</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-platform">Platform</label>
+              <select id="filter-platform">
+                <option value="">Any platform</option>
+              </select>
+            </div>
+            <label class="toggle-filter" for="filter-open-source">
+              <input id="filter-open-source" type="checkbox">
+              <span class="toggle-ui" aria-hidden="true"></span>
+              <span>Open source</span>
+            </label>
           </div>
-          <div class="filter-field">
-            <label for="filter-subcategory">Subcategory</label>
-            <select id="filter-subcategory" disabled>
-              <option value="">All subcategories</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-pricing">Pricing</label>
-            <select id="filter-pricing">
-              <option value="">Any pricing</option>
-              <option value="free">Free</option>
-              <option value="freemium">Freemium</option>
-              <option value="paid">Paid</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-access-type">Access type</label>
-            <select id="filter-access-type">
-              <option value="">Any access type</option>
-              <option value="browser">Works in browser</option>
-              <option value="download">Download required</option>
-              <option value="both">Browser + download</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-platform">Platform</label>
-            <select id="filter-platform">
-              <option value="">Any platform</option>
-            </select>
-          </div>
-          <label class="toggle-filter" for="filter-open-source">
-            <input id="filter-open-source" type="checkbox">
-            <span class="toggle-ui" aria-hidden="true"></span>
-            <span>Open source</span>
-          </label>
-        </div>
+        </details>
 
         <div class="results-toolbar">
           <p class="results-count" id="results-count" role="status" aria-live="polite">Loading resources…</p>

@@ -1160,24 +1160,11 @@
 }
 
 
-/* ---------- Placeholder pages (Explore, Saved, About) ----------
-   Delete these two rules when those pages get their real content. */
+/* ---------- Shared page intro (Explore, Saved and About) ---------- */
 
 .page-intro {
   padding-block: clamp(2.5rem, 1.5rem + 5vw, 5rem) var(--space-5);
   max-width: 48rem;
-}
-
-.preview-note {
-  display: inline-block;
-  margin-bottom: var(--space-5);
-  padding: 0.3rem 0.75rem;
-  border: 1px dashed var(--violet-border);
-  border-radius: var(--radius-sm);
-  color: var(--violet-text);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
 }
 
 /* Shared, accessible resource save control used on Home, Explore and Saved. */

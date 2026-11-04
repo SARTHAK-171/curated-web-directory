@@ -16,6 +16,7 @@ const elements = {
   openSource: document.getElementById("filter-open-source"),
   sort: document.getElementById("sort-order"),
   clear: document.getElementById("clear-filters"),
+  filterDisclosure: document.getElementById("filter-disclosure"),
   count: document.getElementById("results-count"),
   results: document.getElementById("resource-results"),
 };
@@ -207,6 +208,24 @@ function showLoadError(error) {
   console.error("Explore directory failed to load:", error);
 }
 
+function setupMobileFilterDisclosure() {
+  const disclosure = elements.filterDisclosure;
+  if (!disclosure || typeof window.matchMedia !== "function") return;
+
+  const mobileQuery = window.matchMedia("(max-width: 600px)");
+  const syncDisclosure = (event) => {
+    // Keep the full filter layout visible on desktop and collapsed by default on mobile.
+    disclosure.open = !event.matches;
+  };
+
+  syncDisclosure(mobileQuery);
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", syncDisclosure);
+  } else if (typeof mobileQuery.addListener === "function") {
+    mobileQuery.addListener(syncDisclosure);
+  }
+}
+
 function bindControls() {
   elements.search.addEventListener("input", () => {
     state.query = elements.search.value;
@@ -244,6 +263,7 @@ function bindControls() {
 }
 
 async function initialise() {
+  setupMobileFilterDisclosure();
   initCustomSelects([
     elements.category,
     elements.subcategory,

@@ -8,7 +8,7 @@ import { initSearchBoxes } from "./search-box.js";
 import { setupScrollReveal } from "./motion.js";
 
 
-// Page title: "Explore · YOUR_SITE_NAME" (the home page uses the tagline instead)
+// Page titles use the configured ORBIT name; Home uses the site tagline.
 function setPageTitle() {
   const pageTitle = document.body.dataset.title; // set on <body data-title="...">
   document.title = pageTitle

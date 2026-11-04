@@ -3,33 +3,122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YOUR_SITE_NAME</title>
-  <meta name="description" content="What this website is and how resources are chosen.">
+  <title>About · ORBIT</title>
+  <meta name="description" content="Learn what ORBIT is, why it exists and how its curated collection is organised.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#09090d">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b8ff6a'/%3E%3C/svg%3E">
-
-  <!-- Start downloading the fonts right away so text does not flicker -->
   <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <!-- type="module" scripts load after the page is ready -->
+  <link rel="stylesheet" href="assets/css/about.css">
   <script type="module" src="assets/js/app.js"></script>
 </head>
 <body data-page="about" data-title="About">
   <a class="skip-link" href="#main">Skip to main content</a>
-
-  <!-- app.js fills these in on every page -->
   <header id="site-header" class="site-header"></header>
 
   <main id="main">
-    <div class="container">
-      <section class="page-intro">
-        <p class="preview-note enter">Placeholder page. The full About text arrives in Stage 9.</p>
-        <h1 class="enter" style="--i:1">About</h1>
-        <p class="lead enter" style="--i:2">What this website is and how resources are chosen.</p>
+    <div class="container about-page">
+      <section class="about-hero page-intro" aria-labelledby="about-heading">
+        <p class="eyebrow enter">A clearer way to explore</p>
+        <h1 class="enter" id="about-heading" style="--i:1">The useful internet. <span>Without the noise.</span></h1>
+        <p class="lead enter" style="--i:2">
+          ORBIT is a personal, curated directory of websites, tools and digital resources.
+          It gives useful discoveries a clear home, so you can spend less time hunting for links
+          and more time learning, building and exploring.
+        </p>
+      </section>
+
+      <section class="about-story-grid" aria-label="About ORBIT">
+        <article class="about-panel about-panel-primary">
+          <p class="eyebrow">01 / What it is</p>
+          <h2>A starting point, not another platform.</h2>
+          <p>
+            ORBIT brings useful corners of the web together in one organised place.
+            Each resource has a clear description and a direct path to its own website,
+            with extra details available when they help you decide whether it is worth opening.
+          </p>
+        </article>
+        <article class="about-panel about-panel-secondary">
+          <p class="eyebrow">02 / Why it exists</p>
+          <h2>Finding the good stuff takes time.</h2>
+          <p>
+            The internet has more tools, tutorials and experiments than anyone can keep track of.
+            Search results and random bookmarks can make it harder to find a useful starting point.
+            ORBIT keeps a smaller, organised collection that is easier to browse and return to.
+          </p>
+        </article>
+      </section>
+
+      <section class="about-approach" aria-labelledby="approach-heading">
+        <div class="about-section-heading">
+          <p class="eyebrow">03 / How it is organised</p>
+          <h2 id="approach-heading">A few simple rules.</h2>
+          <p>Every entry should earn its place by being useful, understandable and easy to revisit.</p>
+        </div>
+        <ul class="about-principles">
+          <li>
+            <span class="mono-label">01</span>
+            <h3>Quality over quantity</h3>
+            <p>A short, useful collection is better than a huge pile of random links.</p>
+          </li>
+          <li>
+            <span class="mono-label">02</span>
+            <h3>Clear descriptions</h3>
+            <p>Each listing should explain what a resource does before you open it.</p>
+          </li>
+          <li>
+            <span class="mono-label">03</span>
+            <h3>Sensible organisation</h3>
+            <p>Categories and useful details make the collection easier to navigate.</p>
+          </li>
+          <li>
+            <span class="mono-label">04</span>
+            <h3>Useful links</h3>
+            <p>Entries point to the resource itself, with information reviewed rather than guessed.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="about-category-section" aria-labelledby="about-categories-heading">
+        <div class="about-section-heading">
+          <p class="eyebrow">04 / The collection</p>
+          <h2 id="about-categories-heading">Five places to start.</h2>
+          <p>Browse the collection by the kind of thing you want to do.</p>
+        </div>
+        <div class="about-category-grid">
+          <a class="about-category-card" href="explore.html?category=ai">
+            <span class="mono-label">01 / EXPLORE</span><h3>AI</h3>
+            <p>Assistants, model hubs and practical AI tools.</p><span class="about-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="about-category-card" href="explore.html?category=developer">
+            <span class="mono-label">02 / BUILD</span><h3>Developer</h3>
+            <p>Code editors, documentation and tools for building on the web.</p><span class="about-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="about-category-card" href="explore.html?category=cybersecurity">
+            <span class="mono-label">03 / PRACTISE</span><h3>Cybersecurity</h3>
+            <p>Security learning paths, practice labs and useful tools.</p><span class="about-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="about-category-card" href="explore.html?category=study-learning">
+            <span class="mono-label">04 / LEARN</span><h3>Study &amp; Learning</h3>
+            <p>Courses, references and resources for building knowledge.</p><span class="about-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="about-category-card" href="explore.html?category=fun-entertainment">
+            <span class="mono-label">05 / WANDER</span><h3>Fun &amp; Entertainment</h3>
+            <p>Interactive experiments and interesting places to take a break.</p><span class="about-card-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="about-cta" aria-labelledby="about-cta-heading">
+        <div>
+          <p class="eyebrow">05 / Take a look around</p>
+          <h2 id="about-cta-heading">Find something useful.</h2>
+          <p>Open the directory, explore a category and save the resources you want to come back to.</p>
+        </div>
+        <a class="btn btn-primary" href="explore.html">Explore ORBIT <span class="icon-nudge" data-icon="arrow-right"></span></a>
       </section>
     </div>
   </main>

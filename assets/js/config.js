@@ -1,7 +1,7 @@
 // config.js — the settings you are most likely to edit. Everything else reads from here.
 
 // Change the name here and it updates on every page.
-export const SITE_NAME = "YOUR_SITE_NAME";
+export const SITE_NAME = "ORBIT";
 export const SITE_TAGLINE = "The Useful Internet, Organised.";
 export const SITE_DESCRIPTION =
   "A curated collection of useful tools, AI platforms, learning resources and interesting corners of the internet.";
