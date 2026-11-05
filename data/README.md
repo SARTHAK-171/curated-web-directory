@@ -162,6 +162,7 @@ node --experimental-default-type=module tests/data.test.mjs
 node --experimental-default-type=module tests/directory.test.mjs
 node --experimental-default-type=module tests/saved.test.mjs
 node --experimental-default-type=module tests/integration.test.mjs
+node --experimental-default-type=module tests/detail.test.mjs
 ```
 
 Also start the project with a local web server (for example, VS Code Live Server). Do not open the HTML file directly with `file://`; the pages load JSON files using `fetch()`.
