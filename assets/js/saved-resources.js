@@ -81,6 +81,12 @@ function getBrowserStorage() {
 }
 
 export const savedStore = createSavedStore(getBrowserStorage());
+
+// localStorage.clear() dispatches a storage event with key === null.
+export function shouldRefreshSavedStore(event) {
+  return event?.key === SAVED_STORAGE_KEY || event?.key === null;
+}
+
 let activeValidIds = new Set();
 let activeSavedIds = new Set();
 let feedbackElement = null;
@@ -174,7 +180,7 @@ export function initSavedControls(resources, onChange = null) {
   });
 
   window.addEventListener("storage", (event) => {
-    if (event.key === SAVED_STORAGE_KEY) refresh();
+    if (shouldRefreshSavedStore(event)) refresh();
   });
 
   refresh();

@@ -1,6 +1,6 @@
 // explore.js — search, filtering and sorting for the Explore directory.
 
-import { loadCategories, loadResources, ACCESS_TYPE_VALUES, DataValidationError } from "./data.js";
+import { loadCategories, loadResources, DataValidationError } from "./data.js";
 import { filterResources } from "./directory.js";
 import { initCustomSelects, refreshCustomSelects } from "./custom-select.js";
 import { createResourceCard } from "./resource-card.js";
@@ -21,11 +21,11 @@ const elements = {
   results: document.getElementById("resource-results"),
 };
 
-const ACCESS_TYPE_LABELS = {
-  browser: "Works in browser",
-  download: "Download required",
-  both: "Browser + download",
-};
+const ACCESS_TYPE_FILTER_OPTIONS = [
+  { value: "browser", label: "Works in browser" },
+  { value: "download", label: "Download" },
+];
+const ACCESS_TYPE_FILTER_VALUES = ACCESS_TYPE_FILTER_OPTIONS.map((option) => option.value);
 
 let allResources = [];
 let categoryNames = {};
@@ -64,7 +64,7 @@ function populateFilters(categories, resources) {
   addOptions(elements.category, categories.map((item) => ({ value: item.id, label: item.name })), "All categories");
   const platforms = [...new Set(resources.flatMap((item) => item.platforms))].sort((a, b) => a.localeCompare(b));
   addOptions(elements.platform, platforms, "Any platform");
-  addOptions(elements.accessType, ACCESS_TYPE_VALUES.map((value) => ({ value, label: ACCESS_TYPE_LABELS[value] })), "Any access type");
+  addOptions(elements.accessType, ACCESS_TYPE_FILTER_OPTIONS, "Any access type");
 
   // Accept older category-name links, then keep the stable ID in the URL.
   const requestedCategory = categories.find((item) => item.id === state.category || item.name === state.category);
@@ -73,7 +73,7 @@ function populateFilters(categories, resources) {
 
   elements.pricing.value = ["free", "freemium", "paid"].includes(state.pricing) ? state.pricing : "";
   if (!elements.pricing.value) state.pricing = "";
-  elements.accessType.value = ACCESS_TYPE_VALUES.includes(state.accessType) ? state.accessType : "";
+  elements.accessType.value = ACCESS_TYPE_FILTER_VALUES.includes(state.accessType) ? state.accessType : "";
   if (!elements.accessType.value) state.accessType = "";
   elements.platform.value = platforms.includes(state.platform) ? state.platform : "";
   if (!elements.platform.value) state.platform = "";

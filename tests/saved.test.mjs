@@ -1,6 +1,6 @@
 // Run with: node --experimental-default-type=module tests/saved.test.mjs
 import assert from "node:assert/strict";
-import { createSavedStore } from "../assets/js/saved-resources.js";
+import { createSavedStore, shouldRefreshSavedStore } from "../assets/js/saved-resources.js";
 
 function makeStorage(initial = null) {
   const values = new Map();
@@ -12,6 +12,11 @@ function makeStorage(initial = null) {
     snapshot(key = "orbit.savedResourceIds.v1") { return values.get(key) ?? null; },
   };
 }
+
+assert.equal(shouldRefreshSavedStore({ key: "orbit.savedResourceIds.v1" }), true);
+assert.equal(shouldRefreshSavedStore({ key: null }), true, "localStorage.clear() must refresh other open tabs.");
+assert.equal(shouldRefreshSavedStore({ key: "unrelated-key" }), false);
+assert.equal(shouldRefreshSavedStore(null), false);
 
 const validIds = new Set(["alpha", "beta", "gamma"]);
 const storage = makeStorage();
@@ -59,4 +64,4 @@ assert.deepEqual(blockedStore.read(validIds), []);
 assert.equal(blockedStore.toggle("alpha", validIds).ok, false, "Blocked storage should not pretend that a save succeeded.");
 
 assert.equal(createSavedStore(null).toggle("alpha", validIds).ok, false, "Missing storage must fail gracefully.");
-console.log("PASS: Save, unsave, persistence, empty state, corrupt/stale IDs, count and unavailable storage.");
+console.log("PASS: Save, unsave, persistence, cross-tab clear events, empty state, corrupt/stale IDs, count and unavailable storage.");

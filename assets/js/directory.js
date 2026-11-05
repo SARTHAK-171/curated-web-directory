@@ -14,7 +14,8 @@ export function filterResources(resources, filters = {}) {
     if (filters.category && resource.category !== filters.category) return false;
     if (filters.subcategory && resource.subcategory !== filters.subcategory) return false;
     if (filters.pricing && resource.pricing !== filters.pricing) return false;
-    if (filters.accessType && resource.accessType !== filters.accessType) return false;
+    if (filters.accessType === "browser" && !["browser", "both"].includes(resource.accessType)) return false;
+    if (filters.accessType === "download" && !["download", "both"].includes(resource.accessType)) return false;
     if (filters.openSource && !resource.openSource) return false;
     if (filters.platform && !resource.platforms.includes(filters.platform)) return false;
     if (filters.tag && !resource.tags.some((tag) => normalise(tag) === normalise(filters.tag))) return false;

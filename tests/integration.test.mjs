@@ -31,9 +31,19 @@ assert.match(savedHTML, /id="saved-results"/);
 
 const exploreHTML = await readFile(resolve(root, "explore.html"), "utf8");
 assert.match(exploreHTML, /id="filter-access-type"/);
+assert.ok(exploreHTML.includes('<option value="browser">Works in browser</option>'));
+assert.ok(exploreHTML.includes('<option value="download">Download</option>'));
+assert.doesNotMatch(exploreHTML, /<option value="both">/, "The combined access type must not be a separate filter option.");
 assert.match(exploreHTML, /<details class="filter-disclosure" id="filter-disclosure" open>/);
 assert.match(exploreHTML, /<summary>[\s\S]*?Filters[\s\S]*?<\/summary>/);
 const exploreScript = await readFile(resolve(root, "assets/js/explore.js"), "utf8");
+assert.match(exploreScript, /value: "browser", label: "Works in browser"/);
+assert.match(exploreScript, /value: "download", label: "Download"/);
+assert.doesNotMatch(exploreScript, /value: "both"|label: "Browser \\+ download"/);
+assert.match(exploreScript, /ACCESS_TYPE_FILTER_VALUES\.includes\(state\.accessType\)/);
+const directoryScript = await readFile(resolve(root, "assets/js/directory.js"), "utf8");
+assert.match(directoryScript, /filters\.accessType === "browser".*\["browser", "both"\]/);
+assert.match(directoryScript, /filters\.accessType === "download".*\["download", "both"\]/);
 assert.match(exploreScript, /matchMedia\("\(max-width: 600px\)"\)/);
 assert.match(exploreScript, /disclosure\.open = !event\.matches/);
 

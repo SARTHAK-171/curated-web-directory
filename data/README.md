@@ -83,6 +83,8 @@ Before removing a category, move each resource that uses its ID to another categ
 - `download`: using the main resource requires installing or running software outside the browser.
 - `both`: the website provides meaningful browser functionality and the provider also offers a useful downloadable/installable app or tool.
 
+In Explore, there are only two access filters: **Works in browser** and **Download**. A resource marked `both` appears in both filters; it is not a separate filter option. Keep `both` as the resource's data value when both forms of access are genuinely available.
+
 Do not confuse access type with `platforms`. For example, a browser service may work on Windows, macOS and phones but still have `accessType: "browser"`. Downloading a book, image or other content from a website does not make the website a download-required application.
 
 ### Pricing values
