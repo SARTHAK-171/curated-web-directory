@@ -16,11 +16,11 @@
     "displayOrder": 2
   },
   {
-    "id": "cybersecurity",
-    "name": "Cybersecurity",
-    "description": "Ethical hacking labs, security learning, networking and Linux.",
-    "icon": "shield-lock",
-    "color": "#ff7f9d",
+    "id": "web-tools-discovery",
+    "name": "Web Tools & Discovery",
+    "description": "Unusual websites, privacy resources, online utilities, directories and practical internet discoveries.",
+    "icon": "world-www",
+    "color": "#bb91ff",
     "displayOrder": 3
   },
   {

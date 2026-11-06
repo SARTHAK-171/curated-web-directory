@@ -6,6 +6,7 @@ import { buildHeader, buildFooter } from "./layout.js";
 import { hydrateIcons } from "./icons.js";
 import { initSearchBoxes } from "./search-box.js";
 import { setupScrollReveal } from "./motion.js";
+import { initTheme } from "./theme.js";
 
 
 // Page titles use the configured ORBIT name; Home uses the site tagline.
@@ -34,6 +35,7 @@ function setupHeaderScrollState() {
 // ---------------------------------------------------------------
 // Start everything (module scripts run after the page has loaded)
 // ---------------------------------------------------------------
+initTheme();
 setPageTitle();
 buildHeader();
 buildFooter();

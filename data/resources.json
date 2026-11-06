@@ -232,21 +232,25 @@
   {
     "id": "hugging-face",
     "name": "Hugging Face",
-    "description": "A hub for discovering and sharing machine-learning models, datasets and demos.",
-    "fullDescription": "Explore open machine-learning models, datasets, research and interactive Spaces, or publish your own work. The Hub has free public access; private storage, compute and higher resource needs can involve paid plans.",
+    "description": "Explore, share and build with open machine-learning models, datasets and interactive AI applications.",
+    "fullDescription": "Hugging Face Hub is a collaborative platform for discovering and sharing machine-learning models, datasets and Spaces (interactive demos). It supports model and dataset repositories, version history and integrations with popular ML libraries. Some hosted compute and advanced features have usage limits or paid options.",
     "category": "ai",
     "subcategory": "Models and datasets",
     "tags": [
-      "Open models",
-      "Datasets",
+      "AI",
       "Machine learning",
-      "Community"
+      "Models",
+      "Datasets",
+      "Open source",
+      "AI demos"
     ],
     "keywords": [
-      "model hub",
+      "Hugging Face Hub",
+      "Spaces",
       "Transformers",
-      "AI demos",
-      "Spaces"
+      "LLM",
+      "computer vision",
+      "audio models"
     ],
     "pricing": "freemium",
     "freeTrial": false,
@@ -258,16 +262,17 @@
     "icon": "code",
     "featured": false,
     "dateAdded": "2026-11-03",
-    "lastVerified": "2026-11-03",
+    "lastVerified": "2026-11-06",
     "features": [
-      "Browse public models and datasets",
-      "Try interactive Spaces",
-      "Share research and machine-learning projects",
-      "Open community ecosystem"
+      "Discover and share machine-learning models",
+      "Browse datasets for AI and research",
+      "Try interactive applications through Spaces",
+      "Version-controlled repositories and library integrations"
     ],
     "limitations": [
-      "Some hosted demos require paid compute or may be unavailable",
-      "Model licences and usage terms differ by project"
+      "Model licences and usage terms vary by repository",
+      "Some hosted compute and advanced features have limits or paid plans",
+      "Review model cards, dataset documentation and safety information before use"
     ],
     "accessType": "browser",
     "image": null
@@ -638,8 +643,8 @@
     "name": "PortSwigger Web Security Academy",
     "description": "Free interactive lessons and labs for learning web application security.",
     "fullDescription": "PortSwigger's Web Security Academy teaches web vulnerabilities through explanations and hands-on labs. It is designed for legal, controlled practice and covers topics such as SQL injection, cross-site scripting and access control.",
-    "category": "cybersecurity",
-    "subcategory": "Web security labs",
+    "category": "web-tools-discovery",
+    "subcategory": "Security Learning & Labs",
     "tags": [
       "Web security",
       "Labs",
@@ -681,8 +686,8 @@
     "name": "TryHackMe",
     "description": "Guided cybersecurity rooms and browser-based practice for different skill levels.",
     "fullDescription": "TryHackMe provides guided cybersecurity learning rooms and practical exercises. It has a free tier with hundreds of rooms and limited AttackBox time; paid plans unlock additional paths, labs and usage.",
-    "category": "cybersecurity",
-    "subcategory": "Guided learning labs",
+    "category": "web-tools-discovery",
+    "subcategory": "Security Learning & Labs",
     "tags": [
       "Cybersecurity",
       "Guided labs",
@@ -725,8 +730,8 @@
     "name": "OverTheWire",
     "description": "Learn Linux and security concepts through progressive terminal-based wargames.",
     "fullDescription": "OverTheWire hosts community wargames that teach security concepts through practical challenges. Bandit is designed for beginners and introduces command-line and Linux fundamentals. The games are freely accessible.",
-    "category": "cybersecurity",
-    "subcategory": "Linux and terminal practice",
+    "category": "web-tools-discovery",
+    "subcategory": "Security Learning & Labs",
     "tags": [
       "Linux",
       "Command line",
@@ -769,8 +774,8 @@
     "name": "picoCTF",
     "description": "A cybersecurity learning platform with beginner-friendly capture-the-flag challenges.",
     "fullDescription": "picoCTF is an educational CTF platform created by Carnegie Mellon University's CyLab. Learners solve challenges involving areas such as cryptography, web exploitation, forensics and general security in a safe practice environment.",
-    "category": "cybersecurity",
-    "subcategory": "CTF challenges",
+    "category": "web-tools-discovery",
+    "subcategory": "Security Learning & Labs",
     "tags": [
       "CTF",
       "Students",
@@ -813,8 +818,8 @@
     "name": "OWASP Juice Shop",
     "description": "An intentionally vulnerable web app for practising web security in a legal lab.",
     "fullDescription": "OWASP Juice Shop is an open-source training application containing deliberately introduced security flaws. It is useful for security education, demonstrations and testing defensive tools when run in a controlled environment.",
-    "category": "cybersecurity",
-    "subcategory": "Vulnerable practice apps",
+    "category": "web-tools-discovery",
+    "subcategory": "Security Learning & Labs",
     "tags": [
       "OWASP",
       "Web security",
@@ -860,8 +865,8 @@
     "name": "CyberChef",
     "description": "A browser-based toolkit for encoding, decoding, encryption and data analysis tasks.",
     "fullDescription": "CyberChef is an open-source web application developed by GCHQ. It provides a visual recipe-based interface for common data transformations, encoding and decoding, compression, hashing and analysis. Processing is performed in the browser.",
-    "category": "cybersecurity",
-    "subcategory": "Security and data utilities",
+    "category": "web-tools-discovery",
+    "subcategory": "Privacy & Data Utilities",
     "tags": [
       "Data analysis",
       "Encoding",
@@ -1555,6 +1560,257 @@
     "limitations": [
       "Requires an internet connection",
       "Music streams may include platform advertising and are not an offline player"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "yopmail",
+    "name": "YOPmail",
+    "description": "Create disposable email addresses and check temporary inboxes without registering.",
+    "fullDescription": "YOPmail provides disposable email inboxes intended to help reduce spam when signing up for websites. Its inboxes are not password-protected and messages are retained for a limited period, so it must not be used for private, sensitive or account-recovery messages.",
+    "category": "web-tools-discovery",
+    "subcategory": "Temporary & Disposable",
+    "tags": [
+      "Temporary email",
+      "Disposable inbox",
+      "Anti-spam",
+      "Privacy"
+    ],
+    "keywords": [
+      "throwaway email",
+      "temporary inbox",
+      "no registration",
+      "email alias"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://yopmail.com/",
+    "icon": "globe",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [
+      "Create an inbox without account registration",
+      "Use temporary addresses to reduce exposure of a primary email",
+      "Messages are retained for a limited period"
+    ],
+    "limitations": [
+      "Inbox names are not password-protected and may be guessable",
+      "Do not receive banking, personal, confidential or account-recovery messages",
+      "Some websites block disposable email domains"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "have-i-been-pwned",
+    "name": "Have I Been Pwned",
+    "description": "Check whether an email address appears in known data breaches.",
+    "fullDescription": "Have I Been Pwned lets people check email addresses against known breach records and review exposed breach information. It also provides breach notifications and other services. A match means the address appeared in a listed breach; it does not by itself prove an account is currently compromised.",
+    "category": "web-tools-discovery",
+    "subcategory": "Privacy & Security",
+    "tags": [
+      "Data breach check",
+      "Email security",
+      "Privacy",
+      "Account security"
+    ],
+    "keywords": [
+      "HIBP",
+      "breach lookup",
+      "pwned email",
+      "exposed accounts"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://haveibeenpwned.com/",
+    "icon": "globe",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [
+      "Check an email address against known breach records",
+      "Review breach timelines and exposed data categories",
+      "Optional notifications for future exposure"
+    ],
+    "limitations": [
+      "A result is limited to breaches in the service dataset",
+      "A clean result does not guarantee an account has never been exposed",
+      "Use the official site and never share passwords"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "fmhy",
+    "name": "FMHY — Free Media Heck Yeah",
+    "description": "A community-curated directory of free digital resources, tools and websites.",
+    "fullDescription": "FMHY is a large community-maintained index covering topics such as privacy, AI, streaming, listening, gaming, reading, software, education and miscellaneous internet resources. It is an index of third-party links rather than a host for the listed files. Check the destination, copyright rules and local laws before using linked services.",
+    "category": "web-tools-discovery",
+    "subcategory": "Web Directories & Collections",
+    "tags": [
+      "Directory",
+      "Free resources",
+      "Community curated",
+      "Internet discovery"
+    ],
+    "keywords": [
+      "Free Media Heck Yeah",
+      "resource index",
+      "website collection",
+      "wiki"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://fmhy.net/",
+    "icon": "globe",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [
+      "Browse a wide range of curated resource categories",
+      "Discover tools, media resources and online services",
+      "Community-maintained updates and contribution process"
+    ],
+    "limitations": [
+      "Links lead to third-party websites with their own risks and terms",
+      "Availability and legality vary by resource and location",
+      "Use caution with downloads, advertisements and unofficial mirrors"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "jslinux",
+    "name": "JSLinux",
+    "description": "Run selected Linux and other operating-system environments directly in your browser.",
+    "fullDescription": "JSLinux is an in-browser computer emulator by Fabrice Bellard. It offers several emulated systems, including Linux distributions and other legacy environments, allowing users to experiment with operating systems without installing them locally. Performance and available hardware features depend on the emulated system and browser.",
+    "category": "web-tools-discovery",
+    "subcategory": "Browser Environments & Emulation",
+    "tags": [
+      "Linux",
+      "Browser emulator",
+      "Operating systems",
+      "Virtual machine"
+    ],
+    "keywords": [
+      "JSLinux",
+      "x86 emulator",
+      "RISC-V",
+      "online Linux",
+      "browser terminal"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://bellard.org/jslinux/",
+    "icon": "globe",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [
+      "Run supported emulated operating systems in a browser",
+      "Experiment with Linux terminals and selected graphical environments",
+      "Try different CPU architectures and system images"
+    ],
+    "limitations": [
+      "Emulation is slower and more limited than native hardware",
+      "Available systems and features are defined by the project",
+      "Do not treat an emulated environment as a secure production machine"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "grabify-awareness",
+    "name": "Grabify — Tracking-Link Awareness",
+    "description": "A privacy-awareness reference about link-based IP logging and tracking risks.",
+    "fullDescription": "Grabify is associated with IP-logging links that can expose connection metadata when someone opens a crafted URL. This listing is included only to explain the privacy risk and help users recognise tracking links. Do not use tracking links to identify, monitor or target people without their informed consent.",
+    "category": "web-tools-discovery",
+    "subcategory": "Privacy & Security",
+    "tags": [
+      "Privacy warning",
+      "IP address",
+      "Tracking awareness",
+      "Online safety"
+    ],
+    "keywords": [
+      "IP logger",
+      "tracking link",
+      "link tracking",
+      "privacy risk"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://grabify.link/",
+    "icon": "shield-lock",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [],
+    "limitations": [
+      "Can expose visitors’ IP-related and request metadata",
+      "Do not use for covert tracking, harassment or identifying people",
+      "IP addresses do not reliably reveal a person’s exact identity or home address"
+    ],
+    "accessType": "browser",
+    "image": null
+  },
+  {
+    "id": "call-bomber-awareness",
+    "name": "Call Bomber — Safety Awareness",
+    "description": "A safety-awareness entry about phone-bombing services and unwanted call or SMS flooding.",
+    "fullDescription": "Phone-bombing services are associated with repeatedly sending calls or messages to a target number. This entry is listed for awareness, not as an endorsement or instruction to use such services. The reviewed Call Bombers page describes itself as an informational visual simulator and states that it does not place real calls or send SMS. Never use services to harass or disrupt another person.",
+    "category": "web-tools-discovery",
+    "subcategory": "Abuse & Safety Awareness",
+    "tags": [
+      "Safety warning",
+      "Phone spam",
+      "Harassment awareness",
+      "Digital safety"
+    ],
+    "keywords": [
+      "call bombing",
+      "SMS flooding",
+      "phone spam",
+      "abuse awareness"
+    ],
+    "pricing": "free",
+    "freeTrial": false,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://callbombers.com.in/",
+    "icon": "shield-lock",
+    "featured": false,
+    "dateAdded": "2026-11-06",
+    "lastVerified": "2026-11-06",
+    "features": [],
+    "limitations": [
+      "Do not use phone-bombing services against real people or numbers",
+      "Repeated unwanted calls or messages can constitute harassment",
+      "The reviewed page describes its simulator as non-operational; claims may change"
     ],
     "accessType": "browser",
     "image": null

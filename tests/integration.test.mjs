@@ -52,7 +52,7 @@ assert.doesNotMatch(aboutHTML, /Placeholder page|YOUR_SITE_NAME/);
 for (const sectionId of ["about-heading", "approach-heading", "about-categories-heading", "about-cta-heading"]) {
   assert.match(aboutHTML, new RegExp(`id="${sectionId}"`));
 }
-for (const categoryPath of ["ai", "developer", "cybersecurity", "study-learning", "fun-entertainment"]) {
+for (const categoryPath of ["ai", "developer", "web-tools-discovery", "study-learning", "fun-entertainment"]) {
   assert.ok(aboutHTML.includes(`explore.html?category=${categoryPath}`), `About page should link to the ${categoryPath} category.`);
 }
 assert.match(aboutHTML, /Study &amp; Learning/);

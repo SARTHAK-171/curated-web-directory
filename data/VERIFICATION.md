@@ -37,7 +37,7 @@ This field is separate from `platforms`. The platforms field lists browser/opera
 | Vercel | `both` | Web dashboard and deployments, plus an installable command-line interface. [Official CLI docs](https://vercel.com/docs/cli) |
 | Netlify | `both` | Web dashboard and deployments, plus an installable command-line interface. [Official CLI docs](https://docs.netlify.com/cli/get-started/) |
 
-## Cybersecurity
+## Web Tools & Discovery
 
 | Resource | Access type | Verification basis |
 |---|---|---|
@@ -80,3 +80,17 @@ This field is separate from `platforms`. The platforms field lists browser/opera
 - `openSource: true` is used only when the relevant project has a public source repository and an identified open-source licence. A free website is not automatically open source.
 - Some resources offer optional installed tools that are not required for their main browser workflow. The access type reflects the meaningful use described above, not every possible integration.
 - Official product details and access options can change. Recheck the provider's page before making decisions based on current pricing or availability.
+
+
+## Added in the Web Tools & Discovery update (2026-11-06)
+
+| Resource | Review basis | Important notes |
+|---|---|---|
+| YOPmail | [Official site](https://yopmail.com/) describes disposable inboxes, no registration and limited message retention. | Inboxes are not password-protected; never use for sensitive messages. |
+| Have I Been Pwned | [Official site](https://haveibeenpwned.com/) checks email addresses against known breach records. | A clean result is not proof that an account has never been exposed. |
+| FMHY | [Official site](https://fmhy.net/) describes a community-maintained index across privacy, AI, media, software, education and other topics. | Third-party links need independent safety, copyright and legality checks. |
+| JSLinux | [Official site](https://bellard.org/jslinux/) describes in-browser emulation of Linux and other operating systems. | Emulation is constrained and is not a production machine. |
+| Grabify — Tracking-Link Awareness | [Service domain](https://grabify.link/). Listed as a privacy-risk awareness reference. | No endorsement of covert tracking; use only with informed consent. |
+| Call Bomber — Safety Awareness | [Reviewed page](https://callbombers.com.in/) describes an informational visual simulator, not a real calling/SMS service. | Included for awareness only; no harassment or disruption. Recheck claims before future updates. |
+
+Hugging Face was already present in the AI category. Its description, keywords and limitations were refreshed using the [official Hub documentation](https://huggingface.co/docs/hub/en/index); it was not duplicated.

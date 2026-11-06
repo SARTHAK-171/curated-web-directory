@@ -127,9 +127,12 @@ const productionResources = JSON.parse(
 );
 const productionReport = validateResources(productionResources, categories);
 assert.equal(productionReport.valid, true, productionReport.errors.join("\n"));
-assert.equal(productionResources.length, 35, "All Stage 5 resources should be retained.");
+assert.equal(productionResources.length, 41, "All 35 existing resources plus six new entries should be retained.");
 assert.equal(new Set(productionResources.map((item) => item.id)).size, productionResources.length);
 assert.equal(new Set(productionResources.map((item) => item.url)).size, productionResources.length, "Resources should not duplicate official URLs.");
+assert.ok(categories.some((item) => item.id === "web-tools-discovery" && item.name === "Web Tools & Discovery"), "The renamed category must exist.");
+assert.ok(!categories.some((item) => item.id === "cybersecurity"), "The old category ID must be removed.");
+for (const id of ["yopmail", "have-i-been-pwned", "fmhy", "jslinux", "grabify-awareness", "call-bomber-awareness", "hugging-face"]) assert.ok(productionResources.some((item) => item.id === id), `Expected curated resource ${id}.`);
 assert.equal(productionResources.filter((item) => item.featured).length, 3, "The homepage should have three curated featured items.");
 assert.ok(productionResources.every((item) => categoryIds.has(item.category)), "Every resource must reference a category ID.");
 assert.ok(productionResources.every((item) => ACCESS_TYPE_VALUES.includes(item.accessType)), "Every resource needs a valid access type.");
@@ -138,7 +141,7 @@ assert.ok(productionResources.every((item) => item.image === null || (item.image
 const defaults = { query: "", category: "", subcategory: "", pricing: "", accessType: "", openSource: false, platform: "", tag: "", sort: "featured" };
 assert.ok(filterResources(productionResources, { ...defaults, category: "developer", tag: "Web development" }).length > 0, "Web development homepage shortcut should return resources.");
 assert.ok(filterResources(productionResources, { ...defaults, tag: "Creative" }).length > 0, "Creative homepage shortcut should return resources.");
-assert.ok(filterResources(productionResources, { ...defaults, category: "cybersecurity", tag: "Labs" }).length > 0, "Cybersecurity labs homepage shortcut should return resources.");
+assert.ok(filterResources(productionResources, { ...defaults, category: "web-tools-discovery" }).length > 0, "Web Tools & Discovery category shortcut should return resources.");
 assert.ok(filterResources(productionResources, { ...defaults, pricing: "free" }).length > 0, "Free resources homepage shortcut should return resources.");
 assert.ok(filterResources(productionResources, { ...defaults, accessType: "download" }).length > 0, "The access-type filter should return downloadable resources.");
 assert.deepEqual(

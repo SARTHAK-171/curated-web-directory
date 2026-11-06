@@ -72,6 +72,10 @@ export function buildHeader() {
         <span class="brand-name"></span>
       </a>
 
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+        <span class="theme-toggle-label">Light</span>
+      </button>
       <button class="menu-toggle" type="button" aria-expanded="false"
               aria-controls="site-nav" aria-label="Menu">
         <span class="menu-toggle-bars" aria-hidden="true"></span>
