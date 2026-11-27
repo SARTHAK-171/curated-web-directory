@@ -1814,5 +1814,49 @@
     ],
     "accessType": "browser",
     "image": null
+  },
+  {
+    "id": "stagepeek",
+    "name": "StagePeek",
+    "description": "Interactive 2D seating maps and 3D concert stage-view simulator across 201 venues.",
+    "fullDescription": "StagePeek lets concertgoers enter a venue section, row, and seat to preview 2D seating charts, 3D stage sightlines (End, Thrust Runway, and 360° Center layouts), and 1x–10x smartphone camera zoom framing across 201 stadiums, arenas, and domes worldwide. Guests can browse all 201 venues and preview their first seat with full 1x–10x zoom for free with no login required; Pro passes start at $4.99.",
+    "category": "fun-entertainment",
+    "subcategory": "Concerts and live events",
+    "tags": [
+      "Concerts",
+      "3D",
+      "Seat Views",
+      "Maps",
+      "Web App"
+    ],
+    "keywords": [
+      "concert seat view",
+      "3d arena sightlines",
+      "seating chart",
+      "stadium seat preview"
+    ],
+    "pricing": "freemium",
+    "freeTrial": true,
+    "openSource": false,
+    "platforms": [
+      "Web"
+    ],
+    "url": "https://stagepeek.live/",
+    "icon": "world-www",
+    "featured": false,
+    "dateAdded": "2026-11-28",
+    "lastVerified": "2026-11-28",
+    "features": [
+      "Interactive 2D seating maps and 3D arena shells for 201 global venues",
+      "1x–10x smartphone camera zoom simulation from realistic eye level",
+      "End, Thrust Runway, and 360° Center concert stage layout presets",
+      "Free first-seat 1x–10x preview with no login required (4/venue free signed in)"
+    ],
+    "limitations": [
+      "All seat views are illustrative geometric simulations rather than live photographs",
+      "Unlimited seat previews require a StagePeek Pro pass ($4.99+)"
+    ],
+    "accessType": "browser",
+    "image": null
   }
 ]
